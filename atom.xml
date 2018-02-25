@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>byGeek&#39;s Playground</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-02-25T11:09:21.016Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>byGeek</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>博客再次迁移</title>
+    <link href="http://yoursite.com/2018/02/24/%E5%8D%9A%E5%AE%A2%E5%86%8D%E6%AC%A1%E8%BF%81%E7%A7%BB/"/>
+    <id>http://yoursite.com/2018/02/24/博客再次迁移/</id>
+    <published>2018-02-24T08:35:47.000Z</published>
+    <updated>2018-02-25T11:09:21.016Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>由于当初建立博客的失误，我将一些不可名状的东西上传到了github中，今天才发现，吓的我赶紧找方法如何删除。google了一番之后终于找到了一个repo-cleaner工具：<a href="https://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">BFG</a>。 下面就简单记录下如何删除已经commit到服务器上的文件，同时删除commit记录。</p><a id="more"></a><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol><li><p>在你的local working directory中将你要删除的文件删除，正常commit并push到remote，因为BFG工具会使用最新的一次commit。</p><blockquote><p>The BFG treats you like a reformed alcoholic: you’ve made some mistakes in the past, but now you’ve cleaned up your act. Thus the BFG assumes that your latest commit is a <em>good</em> one, with none of the dirty files you want removing from your history still in it. This assumption by the BFG protects your work, and gives you peace of mind knowing that the BFG is <em>only</em> changing your repo history, not meddling with the <em>current</em> files of your project.</p></blockquote></li><li><p>下载BFG工具jar包，<a href="http://repo1.maven.org/maven2/com/madgag/bfg/1.13.0/bfg-1.13.0.jar" target="_blank" rel="noopener">链接</a> 。（当然要先装java runtime）:)</p></li><li><p>下载git repo的bare repository：<code>git clone --mirror git://example.com/some-repo.git</code></p><p>bare repository并不能看到实际的repo文件，但是却包含了repo的全部数据。下载完之后，最好备份一下。</p></li><li><p>在目录下执行：<code>java -jar bfg.jar --delete-files filename some-repo.git</code>。</p><ul><li>后面这个参数为刚刚下载到本地的repo目录，不是完整的git地址。</li><li>filename为要删除的文件，注意，该操作会将根目录下及根目录下的子目录的相同filename的文件都删除</li><li>如果想删除多个文件，filename参数可以写成<code>{file1,file2}</code>。</li></ul></li><li><p>进入到刚下好的repo目录中，执行：</p><p><code>git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</code></p></li><li><p>将修改的repo push到remote：<code>git push</code>。</p></li><li><p>push成功之后查看remote中是否文件已删除，并且与该文件相关的commit的历史记录也删除了。</p></li></ol><h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ul><li><a href="https://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">bfg-repo-cleaner</a></li><li><a href="https://help.github.com/articles/removing-sensitive-data-from-a-repository/" target="_blank" rel="noopener">Removing sensitive data from a repository</a></li></ul><p>下篇博客预告，总结下博客迁移的步骤吧，今天又踩了以前踩过的坑:)</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;由于当初建立博客的失误，我将一些不可名状的东西上传到了github中，今天才发现，吓的我赶紧找方法如何删除。google了一番之后终于找到了一个repo-cleaner工具：&lt;a href=&quot;https://rtyley.github.io/bfg-repo-cleaner/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;BFG&lt;/a&gt;。 下面就简单记录下如何删除已经commit到服务器上的文件，同时删除commit记录。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>onion architecture</title>
+    <link href="http://yoursite.com/2018/02/24/onion-architecture/"/>
+    <id>http://yoursite.com/2018/02/24/onion-architecture/</id>
+    <published>2018-02-24T01:30:17.000Z</published>
+    <updated>2018-02-25T11:11:27.444Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="The-Onion-Architecture"><a href="#The-Onion-Architecture" class="headerlink" title="The Onion Architecture"></a>The Onion Architecture</h1><p>传统的三层架构中数据位于最核心的地方，而洋葱模型将一些UI，DB这些最可能经常要变化的东西放在外圈，同时外圈的layer依赖于里圈的东西。</p><a id="more"></a><h2 id="传统的三层架构"><a href="#传统的三层架构" class="headerlink" title="传统的三层架构"></a>传统的三层架构</h2><p>一层只能调用下一层，不能跨层调用，比如UI只能调用Business Logic 层.</p><p><img src="http://orafj4489.bkt.clouddn.com/traditional_layered_architecture.png" alt="traditional_layered_architecture"></p><h2 id="洋葱架构"><a href="#洋葱架构" class="headerlink" title="洋葱架构"></a>洋葱架构</h2><p>外圈的层可以调用内圈的层</p><p><img src="http://orafj4489.bkt.clouddn.com/onion_architecture.png" alt="onion_architecture"></p><h2 id="洋葱架构要点"><a href="#洋葱架构要点" class="headerlink" title="洋葱架构要点"></a>洋葱架构要点</h2><ul><li>The application is built around an independent object model</li><li>Inner layers define interfaces.  Outer layers implement interfaces</li><li>Direction of coupling is toward the center</li><li>All application core code can be compiled and run separate from infrastructure</li></ul><p>本文摘录<a href="http://jeffreypalermo.com/blog/the-onion-architecture-part-1/" target="_blank" rel="noopener">地址</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;The-Onion-Architecture&quot;&gt;&lt;a href=&quot;#The-Onion-Architecture&quot; class=&quot;headerlink&quot; title=&quot;The Onion Architecture&quot;&gt;&lt;/a&gt;The Onion Architecture&lt;/h1&gt;&lt;p&gt;传统的三层架构中数据位于最核心的地方，而洋葱模型将一些UI，DB这些最可能经常要变化的东西放在外圈，同时外圈的layer依赖于里圈的东西。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>blog plan</title>
+    <link href="http://yoursite.com/2018/02/23/blog-plan/"/>
+    <id>http://yoursite.com/2018/02/23/blog-plan/</id>
+    <published>2018-02-23T02:38:11.000Z</published>
+    <updated>2018-02-25T09:43:32.543Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近打算将onenote上的一些笔记，整理整理上传到博客中，正好熟悉熟悉下markdown的语法。打算一周两篇的量吧。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近打算将onenote上的一些笔记，整理整理上传到博客中，正好熟悉熟悉下markdown的语法。打算一周两篇的量吧。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>2018-new-year</title>
+    <link href="http://yoursite.com/2018/02/23/2018-new-year/"/>
+    <id>http://yoursite.com/2018/02/23/2018-new-year/</id>
+    <published>2018-02-23T00:58:30.000Z</published>
+    <updated>2018-02-25T11:11:52.050Z</updated>
+    
+    <content type="html"><![CDATA[<p>2018年上班第一天。</p><a id="more"></a><p>前些日子一直想做点开年计划，今天趁着不那么忙，把这些计划记录到自己的博客中。希望自己在这一年中能坚持做下来。</p><ul><li>跑步减肥，目标是73KG。前几天搬家，越来越意识到自己真实越来越胖了</li><li>把博客运行起来。想来这个博客搭建好之后都快一年了，内容还只有first-blog-test。。。</li><li>看书，专业书和自己买的两本社科书。关于要看的书，再写一遍博文描述一下。</li><li>开发一个能上线的小程序/app，或者有自己的一个开源项目。</li><li>攒钱去一趟香港旅游。</li></ul><p>2018/2/23 于公司</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2018年上班第一天。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>blog migration test</title>
+    <link href="http://yoursite.com/2017/11/08/blog-migration-test/"/>
+    <id>http://yoursite.com/2017/11/08/blog-migration-test/</id>
+    <published>2017-11-08T02:31:35.000Z</published>
+    <updated>2018-02-25T09:43:32.542Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于换了新电脑，博客内容一直没有迁移过来。<br>（其实一直在忙着玩塞尔达）</p><p>本帖是迁移测试。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;由于换了新电脑，博客内容一直没有迁移过来。&lt;br&gt;（其实一直在忙着玩塞尔达）&lt;/p&gt;
+&lt;p&gt;本帖是迁移测试。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>image test</title>
+    <link href="http://yoursite.com/2017/06/10/image-test/"/>
+    <id>http://yoursite.com/2017/06/10/image-test/</id>
+    <published>2017-06-09T16:22:42.000Z</published>
+    <updated>2018-02-25T09:43:32.543Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用七牛云作为图床，使用七牛云的图片处理功能，可以对图片进行预处理<br><img src="http://orafj4489.bkt.clouddn.com/static/images/demo.jpg?imageView2/0/w/800/q/75|watermark/2/text/YnlHZWVr/font/YXJpYWw=/fontsize/360/fill/I0ZGRkZGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim"></p><p>不适用预处理的图片如下：<br><a id="more"></a><br><img src="http://orafj4489.bkt.clouddn.com/static/images/demo.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用七牛云作为图床，使用七牛云的图片处理功能，可以对图片进行预处理&lt;br&gt;&lt;img src=&quot;http://orafj4489.bkt.clouddn.com/static/images/demo.jpg?imageView2/0/w/800/q/75|watermark/2/text/YnlHZWVr/font/YXJpYWw=/fontsize/360/fill/I0ZGRkZGRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim&quot;&gt;&lt;/p&gt;
+&lt;p&gt;不适用预处理的图片如下：&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>my first blog</title>
+    <link href="http://yoursite.com/2017/05/31/my-first-blog/"/>
+    <id>http://yoursite.com/2017/05/31/my-first-blog/</id>
+    <published>2017-05-31T15:37:54.000Z</published>
+    <updated>2018-02-25T09:43:32.543Z</updated>
+    
+    <content type="html"><![CDATA[<p>终于搞定了一些前几天困扰的问题了，一个是头像无法加载的问题，还有一个是点击所有文章提示模块缺失的问题。<br><a id="more"></a><br>南京的夜晚，夏日炎炎，即使干坐了，也止不住的流汗。<br>先占个坑，等有时间再详细说下问题怎么解决的吧。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;终于搞定了一些前几天困扰的问题了，一个是头像无法加载的问题，还有一个是点击所有文章提示模块缺失的问题。&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>my fisrt post</title>
+    <link href="http://yoursite.com/2017/05/26/my-fisrt-post/"/>
+    <id>http://yoursite.com/2017/05/26/my-fisrt-post/</id>
+    <published>2017-05-26T14:48:59.000Z</published>
+    <updated>2018-02-25T09:43:32.543Z</updated>
+    
+    <content type="html"><![CDATA[<p>this is my first post using hexo</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;this is my first post using hexo&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
