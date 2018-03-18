@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="byGeek&#39;s Playground">
 <meta property="og:description" content="centos简单折腾记录。 新建用户 使用root用户登录到server端。 新建用户账号：adduser robert 设置密码: passwd robert  增加用户到sudoer中root用户拥有系统的最高权限，但是为了系统的安全性，一般不会直接使用root用户。相反我们会使用sudo命令来暂时提高当前用户的权限。下一步我们将新建的用户robert加入到sudoer中。在centos中，在">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-18T13:08:20.429Z">
+<meta property="og:updated_time" content="2018-03-18T13:09:48.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos 初始化简单配置">
 <meta name="twitter:description" content="centos简单折腾记录。 新建用户 使用root用户登录到server端。 新建用户账号：adduser robert 设置密码: passwd robert  增加用户到sudoer中root用户拥有系统的最高权限，但是为了系统的安全性，一般不会直接使用root用户。相反我们会使用sudo命令来暂时提高当前用户的权限。下一步我们将新建的用户robert加入到sudoer中。在centos中，在">
@@ -412,7 +412,7 @@
 <ol>
 <li><p>修改ssh_config文件中的默认端口号</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
-<p>找到<code>\#Port 22</code>这一行，去掉#，取消注释，修改为你想要该的端口号，如10086。</p>
+<p>找到<code>#Port 22</code>这一行，去掉#，取消注释，修改为你想要该的端口号，如10086。</p>
 </li>
 <li><p>按需修改修改防火墙规则和更新selinux规则。</p>
 <p>centos7执行：</p>

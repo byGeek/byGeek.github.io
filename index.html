@@ -572,7 +572,7 @@
 <ol>
 <li><p>修改ssh_config文件中的默认端口号</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
-<p>找到<code>\#Port 22</code>这一行，去掉#，取消注释，修改为你想要该的端口号，如10086。</p>
+<p>找到<code>#Port 22</code>这一行，去掉#，取消注释，修改为你想要该的端口号，如10086。</p>
 </li>
 <li><p>按需修改修改防火墙规则和更新selinux规则。</p>
 <p>centos7执行：</p>
