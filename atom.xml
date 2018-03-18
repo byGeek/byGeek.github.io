@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
-  <updated>2018-02-25T11:09:21.016Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="bygeek.cn/"/>
+  <updated>2018-03-17T13:27:33.246Z</updated>
+  <id>bygeek.cn/</id>
   
   <author>
     <name>byGeek</name>
@@ -17,11 +17,230 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>博客再次迁移</title>
-    <link href="http://yoursite.com/2018/02/24/%E5%8D%9A%E5%AE%A2%E5%86%8D%E6%AC%A1%E8%BF%81%E7%A7%BB/"/>
-    <id>http://yoursite.com/2018/02/24/博客再次迁移/</id>
+    <title>网站备案</title>
+    <link href="bygeek.cn/2018/03/13/%E7%BD%91%E7%AB%99%E5%A4%87%E6%A1%88/"/>
+    <id>bygeek.cn/2018/03/13/网站备案/</id>
+    <published>2018-03-13T01:24:58.000Z</published>
+    <updated>2018-03-17T13:27:33.246Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天打开博客，发现无法访问了，腾讯云提示需要网站备案。打开备案网址，每个省的备案规则还不一样，江苏省备案要求非省户籍必须提供居住证明。证明链如下：</p><blockquote><p>网站备案 -&gt; 居住证明 -&gt; 房屋租赁备案证明 -&gt; 房产证</p></blockquote><p>好吧，看来居住证明是非办理不可了。</p><p>现在域名无法解析，暂时将nginx监听端口修改为8080，只能通过ip访问。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;今天打开博客，发现无法访问了，腾讯云提示需要网站备案。打开备案网址，每个省的备案规则还不一样，江苏省备案要求非省户籍必须提供居住证明。证明链如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;网站备案 -&amp;gt; 居住证明 -&amp;gt; 房屋租赁备案证明 -&amp;gt; 房产证&lt;/p
+      
+    
+    </summary>
+    
+      <category term="hexo" scheme="bygeek.cn/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="bygeek.cn/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>centos 初始化简单配置</title>
+    <link href="bygeek.cn/2018/03/12/centos-%E5%88%9D%E5%A7%8B%E5%8C%96%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/"/>
+    <id>bygeek.cn/2018/03/12/centos-初始化简单配置/</id>
+    <published>2018-03-12T14:08:30.000Z</published>
+    <updated>2018-03-18T11:10:06.952Z</updated>
+    
+    <content type="html"><![CDATA[<p>centos简单折腾记录。</p><h2 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h2><ol><li>使用root用户登录到server端。</li><li>新建用户账号：<code>adduser robert</code></li><li>设置密码: <code>passwd robert</code></li></ol><h2 id="增加用户到sudoer中"><a href="#增加用户到sudoer中" class="headerlink" title="增加用户到sudoer中"></a>增加用户到sudoer中</h2><p>root用户拥有系统的最高权限，但是为了系统的安全性，一般不会直接使用root用户。相反我们会使用sudo命令来暂时提高当前用户的权限。下一步我们将新建的用户robert加入到sudoer中。在centos中，在<code>wheel</code>用户组的用户具有sudo权限。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -aG wheel robert</span><br></pre></td></tr></table></figure><p>测试是否成功。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su robert</span><br><span class="line">sudo ls -al /root</span><br></pre></td></tr></table></figure><h3 id="修改SSH默认端口"><a href="#修改SSH默认端口" class="headerlink" title="修改SSH默认端口"></a>修改SSH默认端口</h3><p>ssh是一个安全的加密协议，用于主机之间的通信。为了加强系统的安全性，修改默认的ssh的22端口。</p><ol><li><p>修改ssh_config文件中的默认端口号</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure><p>找到<code>\#Port 22</code>这一行，去掉#，取消注释，修改为你想要该的端口号，如10086。</p></li><li><p>按需修改修改防火墙规则和更新selinux规则。</p><p>centos7执行：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --add-port 10086</span><br><span class="line">firewall-cmd --add-port 2345/tcp --permanent</span><br></pre></td></tr></table></figure><p>centos6执行：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -p tcp --dport 10086 -j ACCEPT</span><br></pre></td></tr></table></figure><p>同时按需修改selinux:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">semanage port -a -t ssh_port_t -p tcp 10086</span><br></pre></td></tr></table></figure></li><li><p>重启ssh服务: </p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart sshd.service</span><br></pre></td></tr></table></figure></li><li><p>测试ssh链接：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh robert@ip_address -p 10086</span><br></pre></td></tr></table></figure></li></ol><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul><li><a href="https://wiki.centos.org/HowTos/Network/SecuringSSH" target="_blank" rel="noopener">centos wiki</a></li><li><a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-centos-quickstart" target="_blank" rel="noopener">add sudoer</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;centos简单折腾记录。&lt;/p&gt;
+&lt;h2 id=&quot;新建用户&quot;&gt;&lt;a href=&quot;#新建用户&quot; class=&quot;headerlink&quot; title=&quot;新建用户&quot;&gt;&lt;/a&gt;新建用户&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;使用root用户登录到server端。&lt;/li&gt;
+&lt;li&gt;新建用户账号
+      
+    
+    </summary>
+    
+      <category term="linux" scheme="bygeek.cn/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="bygeek.cn/tags/linux/"/>
+    
+      <category term="centos" scheme="bygeek.cn/tags/centos/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用beyond compare自动生成patch包</title>
+    <link href="bygeek.cn/2018/03/12/%E5%88%A9%E7%94%A8beyond-compare%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90patch%E5%8C%85/"/>
+    <id>bygeek.cn/2018/03/12/利用beyond-compare自动生成patch包/</id>
+    <published>2018-03-12T02:33:40.000Z</published>
+    <updated>2018-03-17T13:27:33.243Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>beyond compare对于程序员来说，可谓是一个不可多得的文件比较工具，试用过winMerge以及一些自带的diff工具之后，还是发现beyond compare界面最为友好，功能也比其他工具强大。</p><p>最近有一个需求是能否在每次release之后，可以比较方便的产生各个版本的升级patch包。持续集成的工具(类似jenkins，Travis CI)我没有了解过，不知道是否能有这个功能。但是仅仅对于这个小需求来说，利用beyond compare工具就可以做到。</p><a id="more"></a><h2 id="利用BC-GUI生成patch包"><a href="#利用BC-GUI生成patch包" class="headerlink" title="利用BC GUI生成patch包"></a>利用BC GUI生成patch包</h2><ol><li><p>选中需要对比的两个文件夹，右键选择compare</p></li><li><p>在BC中选择diff，只显示有变化的文件</p></li><li><p>在BC菜单栏中Edit -&gt; Expand all, Edit -&gt; select all files</p></li><li><p>在选中的文件中右击，选择copy to folder</p><p><img src="bc_copy_to_folder.png" alt="bc_copy_to_folder"></p></li><li><p>在打开的对话框中，选择要生成patch的文件(left/right side)，选择folder structure为base</p><p><img src="copy_to.png" alt="copy_to"></p></li><li><p>patch包生成完毕。</p></li></ol><h2 id="编写脚本自动化"><a href="#编写脚本自动化" class="headerlink" title="编写脚本自动化"></a>编写脚本自动化</h2><p>BC其实是支持脚本运行的，可移步与<a href="https://www.scootersoftware.com/v4help/index.html?sample_scripts.html" target="_blank" rel="noopener">此</a>。同时安装完BC之后，会在安装目录有CHM的帮助文件，具体的一些语法可参考该文件。</p><ol><li><p>编写脚本，将脚本保存为<code>bc_auto_script.txt</code></p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">log verbose <span class="string">"c:\bclog.txt"</span>        <span class="comment">#表示将脚本的log记录在bclog.txt中</span></span><br><span class="line">load <span class="string">"d:\testv1.0"</span> <span class="string">"d:\testv2.0"</span>     <span class="comment">#加载需要比较的文件夹</span></span><br><span class="line"><span class="keyword">filter</span> <span class="string">"-*.log;-lib\"</span>             <span class="comment">#利用beyong compare中的filter：除去*.log文件以及lib子文件夹，即这些不参与比较</span></span><br><span class="line">expand all                        <span class="comment">#展开文件，这个命令与beyond compare中的UI的expand all是对应的</span></span><br><span class="line">select right.diff.files right.orphan.files   <span class="comment">#只选取有差异的文件</span></span><br><span class="line">copyto right path:base <span class="string">"D:\diff.zip"</span>        <span class="comment">#将有差异的文件拷贝到d:\diff中，注意copyto命令的参数</span></span><br><span class="line">                                            <span class="comment">##right: 对应上述load命令中的参数，即testv2.0，意思是将testv2.0的差异文件copy出来</span></span><br><span class="line">                                            <span class="comment">##path:base: 指保留目录结构</span></span><br><span class="line">                                            <span class="comment">##d:\diff: 输出目录，也可以指明为zip文件：如"d:\diff.zip"，这样最后会生成一个zip包</span></span><br></pre></td></tr></table></figure></li><li><p>cmd下执行：<code>&quot;C:\Program Files (x86)\Beyond Compare 4\Bcompare.exe&quot; /silent &quot;@D:\bc_auto_script.txt&quot;</code>, BC安装路径， silent参数表示不启动GUI， 后面是在第一部中编写的脚本文件。</p></li><li><p>diff.zip即为生成的patch文件。如果要实现批量的生成patch包，可以编写一个批处理脚本。可参考<a href="https://github.com/byGeek/auto_patch" target="_blank" rel="noopener">这里</a>。</p></li></ol><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul><li><a href="https://www.scootersoftware.com/v4help/index.html?sample_scripts.html" target="_blank" rel="noopener">beyond compare sample script</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;beyond compare对于程序员来说，可谓是一个不可多得的文件比较工具，试用过winMerge以及一些自带的diff工具之后，还是发现beyond compare界面最为友好，功能也比其他工具强大。&lt;/p&gt;
+&lt;p&gt;最近有一个需求是能否在每次release之后，可以比较方便的产生各个版本的升级patch包。持续集成的工具(类似jenkins，Travis CI)我没有了解过，不知道是否能有这个功能。但是仅仅对于这个小需求来说，利用beyond compare工具就可以做到。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="CI" scheme="bygeek.cn/categories/CI/"/>
+    
+    
+      <category term="CI" scheme="bygeek.cn/tags/CI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TCP报头的标志位</title>
+    <link href="bygeek.cn/2018/03/05/TCP%E6%8A%A5%E5%A4%B4%E7%9A%84%E6%A0%87%E5%BF%97%E4%BD%8D/"/>
+    <id>bygeek.cn/2018/03/05/TCP报头的标志位/</id>
+    <published>2018-03-05T09:15:45.000Z</published>
+    <updated>2018-03-11T12:58:33.428Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="">上篇文章</a>简单的摘录了TCP建立连接和释放连接的过程。TCP报头中的标志位于操控TCP的状态机。下面简单说说TCP报头中的标志位。</p><a id="more"></a><h2 id="TCP-报头"><a href="#TCP-报头" class="headerlink" title="TCP 报头"></a>TCP 报头</h2><p>二图胜千言。</p><p><img src="tcp_header.svg" alt="tcp_header1"></p><p><img src="tcp_header1.png" alt="tcp_header1"></p><p>对比上述二图，可以看到TCP报文中定义了8个标志位。分别为<code>SYN,ACK,FIN,PSH,RST,URG,CWR,ECE</code>，其中最为常用的是前六个标志位。通过对这些标志位置位，可以控制TCP连接的建立和释放。</p><h2 id="标志位"><a href="#标志位" class="headerlink" title="标志位"></a>标志位</h2><p>标志位的功能摘录如下：</p><blockquote><ul><li><strong>SYN</strong>: for SYNchronize; marks packets that are part of the new-connection handshake</li><li><strong>ACK</strong>: indicates that the header Acknowledgment field is valid; that is, all but the first packet</li><li><strong>FIN</strong>: for FINish; marks packets involved in the connection closing</li><li><strong>PSH</strong>: for PuSH; marks “non-full” packets that should be delivered promptly at the far end</li><li><strong>RST</strong>: for ReSeT; indicates various error conditions</li><li><strong>URG</strong>: for URGent; part of a now-seldom-used mechanism for high-priority data</li><li><strong>CWR</strong> and <strong>ECE</strong>: part of the Explicit Congestion Notification mechanism</li></ul></blockquote><blockquote><p>URG：此标志表示TCP包的紧急指针域（后面马上就要说到）有效，用来保证TCP连接不被中断，并且督促中间层设备要尽快处理这些数据； </p><p>ACK：此标志表示应答域有效，就是说前面所说的TCP应答号将会包含在TCP数据包中；有两个取值：0和1，为1的时候表示应答域有效，反之为0； </p><p>PSH：这个标志位表示Push操作。所谓Push操作就是指在数据包到达接收端以后，立即传送给应用程序，而不是在缓冲区中排队； </p><p>RST：这个标志表示连接复位请求。用来复位那些产生错误的连接，也被用来拒绝错误和非法的数据包； </p><p>SYN：表示同步序号，用来建立连接。SYN标志位和ACK标志位搭配使用，当连接请求的时候，SYN=1，ACK=0；连接被响应的时候，SYN=1，ACK=1；这个标志的数据包经常被用来进行端口扫描。扫描者发送一个只有SYN的数据包，如果对方主机响应了一个数据包回来，就表明这台主机存在这个端口；但是由于这种扫描方式只是进行TCP三次握手的第一次握手，因此这种扫描的成功表示被扫描的机器不很安全，一台安全的主机将会强制要求一个连接严格的进行TCP的三次握手； </p><p>FIN： 表示发送端已经达到数据末尾，也就是说双方的数据传送完成，没有数据可以传送了，发送FIN标志位的TCP数据包后，连接将被断开。这个标志的数据包也经常被用于进行端口扫描。</p></blockquote><h2 id="TCP过程"><a href="#TCP过程" class="headerlink" title="TCP过程"></a>TCP过程</h2><p>结合下图来理解TCP连接的建立与释放和标志位的关系。</p><p><img src="TCP_process.jpg" alt="tcp_process"></p><h2 id="Wireshark抓包"><a href="#Wireshark抓包" class="headerlink" title="Wireshark抓包"></a>Wireshark抓包</h2><p>我们可以利用Wireshark抓包工具来对上述过程进行抓包。Wireshar本身不支持loopback address（即127.0.0.1）进行抓包测试，但是可以下载一个插件实现该功能：<a href="https://nmap.org/npcap/" target="_blank" rel="noopener">Npcap</a>。</p><ol><li><p>在本地建立一个socket 链接，详情可参考<a href="https://bygeek.github.io/2018/03/05/Socket%E9%80%9A%E4%BF%A1%E6%B5%85%E6%9E%90/#more" target="_blank" rel="noopener">该博文</a>。</p></li><li><p>打开wireshark，选择npcap虚拟网卡，开始抓包，并在filter中过滤TCP端口。</p></li><li><p>三次握手建立连接。SYN表示开始建立连接，PSH表示该包中有数据。</p><p><img src="TCP_SYN.png" alt="TCP_SYN"></p><p>同时在wireshark的中间窗口中可以更清楚的看到标志位的置位情况。</p><p><img src="tcp_flags.png" alt="tcp_flags"></p></li><li><p>四次挥手释放连接。FIN表示开始释放连接。client端发送带FIN标志的数据包，server端收到后给一个ACK确认包。然后server端确认自己也没有数据要发送，也给一个FIN包，最后client端回复ACK包，至此连接被释放。</p><p><img src="tcp_fin.png" alt="tcp_fin"></p></li></ol><h2 id="netstat命令行工具"><a href="#netstat命令行工具" class="headerlink" title="netstat命令行工具"></a>netstat命令行工具</h2><p>在windows下，系统提供了一个netstat工具来查看连接的状态。</p><p><code>netstat -na | find &quot;55554&quot;</code></p><p><img src="netstat.png" alt="netstat"></p><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul><li><a href="https://intronetworks.cs.luc.edu/current/html/tcp.html" target="_blank" rel="noopener">TCP Transport</a></li><li><a href="http://www.cnblogs.com/kesal/p/3285415.html" target="_blank" rel="noopener">TCP\IP三次握手连接，四次握手断开分析</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;&quot;&gt;上篇文章&lt;/a&gt;简单的摘录了TCP建立连接和释放连接的过程。TCP报头中的标志位于操控TCP的状态机。下面简单说说TCP报头中的标志位。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="网络通信" scheme="bygeek.cn/categories/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
+    
+    
+      <category term="TCP" scheme="bygeek.cn/tags/TCP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TCP中的三次握手和四次挥手</title>
+    <link href="bygeek.cn/2018/03/05/TCP%E4%B8%AD%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/"/>
+    <id>bygeek.cn/2018/03/05/TCP中的三次握手和四次挥手/</id>
+    <published>2018-03-05T08:55:41.000Z</published>
+    <updated>2018-03-11T12:58:33.426Z</updated>
+    
+    <content type="html"><![CDATA[<p>TCP(Transmission Control Protocol)是一种面向连接的可靠的传输协议。TCP连接的建立和释放过程可由下图表示：</p><a id="more"></a><p><img src="TCP_process.jpg" alt="TCP_process"></p><p>那么问题来了：</p><ol><li><p>为什么建立连接协议是三次握手，而关闭连接却是四次握手呢？</p><p>这是因为服务端的 LISTEN 状态下的 SOCKET 当收<br>到 SYN 报文的建立连接请求后，它可以把 ACK 和 SYN （ ACK 起应答作用，而 SYN 起同步作用）放在一个报文里来发送。TCP是全双工通信，关闭连接时，<br>当收到对方的 FIN 报文通知时，它仅仅表示对方没有数据发送给你了；但未必你所有的数据都全部发送给对方了，所以你可以未必会马上会关闭 SOCKET, 也即你可能还需要发送一些数据给对方之后，再发送 FIN 报文给对方来表示你同意现在可以关闭连接了，所以它这里的 ACK 报文<br>和 FIN报文多数情况下都是分开发送的。 </p></li><li><p>为什么 TIME_WAIT 状态还需要等 2MSL 后才能返回到 CLOSED 状态？</p><p>这是因为虽然双方都同意关闭连接了，而且握手的 4 个报文也都协调和发送完毕，按理可以直接回到 CLOSED 状态（就好比从 SYN_SEND 状态<br>到 ESTABLISH 状态那样）；但是因为我们必须要假想网络是不可靠的，你无法保证你最后发送的 ACK 报文会一定被对方收到，因此对方处<br>于 LAST_ACK 状态下的 SOCKET 可能会因为超时未收到 ACK 报文，而重发 FIN 报文，所以这个 TIME_WAIT 状态的作用<br>就是用来重发可能丢失的 ACK 报文。</p></li></ol><p>本文摘录自 <a href="http://www.cnblogs.com/kesal/p/3285415.html" target="_blank" rel="noopener">此</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;TCP(Transmission Control Protocol)是一种面向连接的可靠的传输协议。TCP连接的建立和释放过程可由下图表示：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="网络通信" scheme="bygeek.cn/categories/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
+    
+    
+      <category term="TCP" scheme="bygeek.cn/tags/TCP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>c#：关于socket.Receive是否阻塞的问题</title>
+    <link href="bygeek.cn/2018/03/05/c-%EF%BC%9A%E5%85%B3%E4%BA%8Esocket-Receive%E6%98%AF%E5%90%A6%E9%98%BB%E5%A1%9E%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>bygeek.cn/2018/03/05/c-：关于socket-Receive是否阻塞的问题/</id>
+    <published>2018-03-05T08:38:40.000Z</published>
+    <updated>2018-03-11T12:58:33.437Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近socket调查一个bug的时候，发现一个“问题”。在c#中调用<code>socket.Receive(buff)</code>的时候，并没有阻塞当前线程，而是直接返回。</p><a id="more"></a><p>查看MSDN：</p><blockquote><p>The Receive method reads data into the buffer parameter and returns the number of bytes successfully read. You can call Receive from both connection-oriented and connectionless sockets.</p><p>This overload only requires you to provide a receive buffer. The buffer offset defaults to 0, the size defaults to the length of the buffer parameter, and the SocketFlags value defaults to None.</p><p>If you are using a connection-oriented protocol, you must either call Connect to establish a remote host connection, or Accept to accept an incoming connection prior to calling Receive. The Receive method will only read data that arrives from the remote host established in the Connect or Acceptmethod. If you are using a connectionless protocol, you can also use the ReceiveFrom method. ReceiveFrom will allow you to receive data arriving from any host.</p><p>If no data is available for reading, the Receive method will block until data is available, unless a time-out value was set by using Socket.ReceiveTimeout. If the time-out value was exceeded, the Receive call will throw a SocketException. If you are in non-blocking mode, and there is no data available in the in the protocol stack buffer, the Receive method will complete immediately and throw a SocketException. You can use the Available property to determine if data is available for reading. When Available is non-zero, retry the receive operation.</p><p><strong>If you are using a connection-oriented Socket, the Receive method will read as much data as is available, up to the size of the buffer. If the remote host shuts down the Socket connection with the Shutdown method, and all available data has been received, the Receive method will complete immediately and return zero bytes.</strong></p><p>If you are using a connectionless Socket, Receive will read the first queued datagram from the destination address you specify in the Connectmethod. If the datagram you receive is larger than the size of the buffer parameter, buffer gets filled with the first part of the message, the excess data is lost and a SocketException is thrown.</p></blockquote><p>加粗位置：当使用面向连接的socket（比如使用TCP协议），<code>socket.Receive(buff)</code>方法会获取尽可能多的数据来填充<code>buff</code>。但是如果remote端(可以是client，也可以是server)调用<code>shutdown</code>，而且所有的数据都收到了，则再次调用<code>socket.Receive(buff)</code>会立即返回。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近socket调查一个bug的时候，发现一个“问题”。在c#中调用&lt;code&gt;socket.Receive(buff)&lt;/code&gt;的时候，并没有阻塞当前线程，而是直接返回。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="socket" scheme="bygeek.cn/categories/socket/"/>
+    
+    
+      <category term="socket" scheme="bygeek.cn/tags/socket/"/>
+    
+      <category term="c#" scheme="bygeek.cn/tags/c/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Socket通信浅析</title>
+    <link href="bygeek.cn/2018/03/05/Socket%E9%80%9A%E4%BF%A1%E6%B5%85%E6%9E%90/"/>
+    <id>bygeek.cn/2018/03/05/Socket通信浅析/</id>
+    <published>2018-03-05T06:46:38.000Z</published>
+    <updated>2018-03-11T12:58:33.420Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>Socket通信是计算机网络中一种重要的数据交换的方式。维基百科对socket定义如下：</p><blockquote><p>在操作系统中，通常会为应用程序提供一组应用程序接口（API），称为套接字接口（英语：socket API）。应用程序可以通过套接字接口，来使用网络套接字，以进行数据交换。最早的套接字接口来自于4.2 BSD，因此现代常见的套接字接口大多源自Berkeley套接字（Berkeley sockets）标准。在套接字接口中，以<strong>IP地址</strong>及<strong>通信端口</strong>组成套接字地址（socket address）。远程的套接字地址，以及本地的套接字地址完成连接后，再加上<strong>使用的协议</strong>（protocol），这个<strong>五元组</strong>（five-element tuple)，作为<strong>套接字对</strong>（socket pairs），之后就可以彼此交换数据。例如，在同一台计算机上，TCP协议与UDP协议可以同时使用相同的port而互不干扰。 操作系统根据套接字地址，可以决定应该将数据送达特定的进程或线程。</p></blockquote><a id="more"></a><p>Socket本身并不是通信协议，只是定义的一个调用接口(API)，我们可以通过socket来使用TCP/UDP协议。socket只是对TCP等协议的抽象，方便应用层调用底层的通信协议。如下图：</p><p><img src="01_socket_layer.png" alt="socket_position"></p><h2 id="Socket-原语"><a href="#Socket-原语" class="headerlink" title="Socket 原语"></a>Socket 原语</h2><p>所谓的原语(primitive)是指定义的一些基本操作，跟具体的实现无关。TCP协议中socket定义的原语如下图：</p><p><img src="02_socket_primitives.png" alt="socket_primitives"></p><p>其中包含两个方面，server side和client side。</p><blockquote><ol><li><p>Server side: Server startup executes <strong>SOCKET</strong>, <strong>BIND</strong>, <strong>LISTEN</strong>.</p><p><strong>LISTEN</strong> - allocate queue for multiple simultaneous clients.</p><p><strong>ACCEPT</strong> - suspend server until request. When client request arrives: ACCEPT returns.<br>Start new socket (<a href="http://computing.dcu.ie/~humphrys/Notes/OS/processes.html#threads" target="_blank" rel="noopener">thread</a> or process) with same properties as original, this handles the request,<br>server goes on waiting on original socket.<br>If new request arrives while spawning thread for this one, it is queued.<br>If queue full it is refused.</p><p>​</p></li><li><p>Client side: <strong>SOCKET</strong> to create. Then <strong>CONNECT</strong>. When this returns the socket is open.</p><p>Both sides can now <strong>SEND</strong>, <strong>RECEIVE</strong>.</p><p>Connection not released until both sides do <strong>CLOSE</strong>. Typically client does it, server acks.</p></li></ol></blockquote><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>下面通过一个简单的示例，来展示c#中的socket编程的API，实现socket 多client连接。</p><ol><li><p>server端代码：在while循环中接受client的连接，accept之后另起一个线程来handle这个request，并通过检查socket的状态来判断连接是否是active。</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Run</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            IPEndPoint server = <span class="keyword">new</span> IPEndPoint(IPAddress.Parse(<span class="string">"127.0.0.1"</span>), <span class="number">55554</span>);</span><br><span class="line">            Socket listener = <span class="keyword">new</span> Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line"></span><br><span class="line">            listener.Bind(server);</span><br><span class="line">            listener.Listen(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">            &#123;</span><br><span class="line"></span><br><span class="line">                Log(<span class="string">"waiting for connection..."</span>);</span><br><span class="line">                Socket handler = listener.Accept();</span><br><span class="line">                Log(<span class="string">"connection established."</span>);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">try</span></span><br><span class="line">                &#123;</span><br><span class="line">                    Thread thread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> ParameterizedThreadStart(HandleSocket));</span><br><span class="line">                    thread.Start(handler);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">catch</span> (Exception e)</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine(e.Message);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">HandleSocket</span>(<span class="params"><span class="keyword">object</span> socket</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> handler = socket <span class="keyword">as</span> Socket;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">byte</span>[] data = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">bool</span> connected = SocketConnected(handler);</span><br><span class="line">                <span class="keyword">while</span> (connected)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">var</span> cnt = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">var</span> recvStr = <span class="keyword">string</span>.Empty;</span><br><span class="line">                    cnt = handler.Receive(data, SocketFlags.None);</span><br><span class="line">                    recvStr = Encoding.Default.GetString(data, <span class="number">0</span>, cnt);</span><br><span class="line">                    <span class="keyword">if</span> (recvStr.IndexOf(<span class="string">"\n"</span>) &gt; <span class="number">0</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="comment">//response</span></span><br><span class="line">                        Log(<span class="string">"\n "</span> + DateTime.Now.ToString() + <span class="string">" received cmd: "</span> + recvStr);</span><br><span class="line">                        Log(<span class="string">"send ok back.\n"</span>);</span><br><span class="line"></span><br><span class="line">                        <span class="keyword">byte</span>[] sendStr = Encoding.Default.GetBytes(<span class="string">"ok\n"</span>);</span><br><span class="line">                        handler.Send(sendStr);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="comment">/*</span></span><br><span class="line"><span class="comment">                    if (recvStr.IndexOf("&lt;EOF&gt;") &gt;= 0)</span></span><br><span class="line"><span class="comment">                    &#123;</span></span><br><span class="line"><span class="comment">                        break;</span></span><br><span class="line"><span class="comment">                    &#125;</span></span><br><span class="line"><span class="comment">                     * */</span></span><br><span class="line"></span><br><span class="line">                    connected = SocketConnected(handler);</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">                Log(<span class="string">"close socket..."</span>);</span><br><span class="line">                handler.Shutdown(SocketShutdown.Both);</span><br><span class="line">                handler.Close();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (handler != <span class="literal">null</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    handler.Shutdown(SocketShutdown.Both);</span><br><span class="line">                    handler.Close();</span><br><span class="line">                &#125;</span><br><span class="line">                Log(ex.Message);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li><li><p>client端代码：通过connect来建立连接，建立成功之后，即可发送数据，收发多次数据之后，将连接关闭。</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Communicate</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            Socket socket = <span class="keyword">new</span> Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line"></span><br><span class="line">            IPEndPoint endpoint = <span class="keyword">new</span> IPEndPoint(IPAddress.Parse(<span class="string">"127.0.0.1"</span>), <span class="number">55554</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">string</span> recv = <span class="keyword">string</span>.Empty;</span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                socket.Connect(endpoint);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">byte</span>[] data = Encoding.Default.GetBytes(<span class="string">"connect\n"</span>);</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">                &#123;</span><br><span class="line">                    socket.Send(data);</span><br><span class="line">                    Console.WriteLine(<span class="string">"&#123;0&#125; send: connect\n"</span>, DateTime.Now.ToString());</span><br><span class="line">                    <span class="keyword">var</span> cnt = socket.Receive(buffer);</span><br><span class="line"></span><br><span class="line">                    recv = Encoding.Default.GetString(buffer, <span class="number">0</span>, cnt);</span><br><span class="line">                    Console.WriteLine(<span class="string">"&#123;0&#125; received: &#123;1&#125;"</span>, DateTime.Now.ToString(), recv);</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (!recv.Contains(<span class="string">"ok"</span>))</span><br><span class="line">                    &#123;</span><br><span class="line">                        Console.WriteLine(<span class="string">"not ok!\n"</span>);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//byte[] end = Encoding.Default.GetBytes("&lt;EOF&gt;");</span></span><br><span class="line">                <span class="comment">//socket.Send(end);</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">//socket.Disconnect(false);</span></span><br><span class="line">                socket.Shutdown(SocketShutdown.Both);</span><br><span class="line">                socket.Close();</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(ex);</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure></li><li><p>注意点：</p><ul><li><p>在csharp中，socket等资源属于非托管资源，使用完毕之后，必须释放（client和server分别close），否则会导致内存泄漏。</p></li><li><p>server端close的释放时机一般是client端这边close之后，server也没有数据发送给client端。可以有以下方法来判断建立的连接是否已经close了：</p><ul><li><p>通过client端发送定义好的字符，如<code>&lt;EOF&gt;</code>，当server端收到预定义好的字符串，则断开与client的连接并回收资源。</p></li><li><p>通过<code>Socket.Poll</code>方法。该方法可以用来判断socket的连接状态。MSDN文档如下：</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">bool</span> <span class="title">Poll</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params"><span class="keyword">int</span> microSeconds,</span></span></span><br><span class="line"><span class="function"><span class="params">SelectMode mode</span></span></span><br><span class="line"><span class="function"><span class="params"></span>)</span></span><br></pre></td></tr></table></figure><blockquote><ul><li>Poll will block execution until the specified time period, measured in <em>microseconds</em>, elapses. Set the <em>microSeconds</em> parameter to a negative integer if you would like to wait indefinitely for a response.</li><li>The Poll method will check the state of the <a href="https://msdn.microsoft.com/en-us/library/system.net.sockets.socket.aspx" target="_blank" rel="noopener">Socket</a>. Specify <a href="https://msdn.microsoft.com/en-us/library/y9x13hh4.aspx" target="_blank" rel="noopener">SelectMode.SelectRead</a> for the <em>selectMode</em> parameter to determine if the <a href="https://msdn.microsoft.com/en-us/library/system.net.sockets.socket.aspx" target="_blank" rel="noopener">Socket</a> is readable. Specify <a href="https://msdn.microsoft.com/en-us/library/y9x13hh4.aspx" target="_blank" rel="noopener">SelectMode.SelectWrite</a> to determine if the <a href="https://msdn.microsoft.com/en-us/library/system.net.sockets.socket.aspx" target="_blank" rel="noopener">Socket</a> is writable. Use <a href="https://msdn.microsoft.com/en-us/library/y9x13hh4.aspx" target="_blank" rel="noopener">SelectMode.SelectError</a> to detect an error condition.</li></ul></blockquote><blockquote><p><img src="03_select_mode.png" alt="select_mode"></p></blockquote></li></ul></li></ul></li></ol><h2 id="TCP-浅析占位"><a href="#TCP-浅析占位" class="headerlink" title="TCP 浅析占位"></a>TCP 浅析占位</h2><p>下篇博客链接占位。</p><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul><li><a href="http://computing.dcu.ie/~humphrys/Notes/Networks/sockets.html" target="_blank" rel="noopener">socket 原语</a></li><li><a href="https://www.jianshu.com/p/94b138362173" target="_blank" rel="noopener">即时通讯系列之Socket简介</a></li><li><a href="https://msdn.microsoft.com/en-us/library/system.net.sockets.socket.poll.aspx" target="_blank" rel="noopener">MSDN Socket.Poll Method</a></li><li><a href="https://zh.wikipedia.org/wiki/%E7%B6%B2%E8%B7%AF%E6%8F%92%E5%BA%A7" target="_blank" rel="noopener">网络套接字 维基</a></li><li><a href="https://stackoverflow.com/questions/722240/instantly-detect-client-disconnection-from-server-socket" target="_blank" rel="noopener">Instantly detect client disconnection from server socket</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;p&gt;Socket通信是计算机网络中一种重要的数据交换的方式。维基百科对socket定义如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在操作系统中，通常会为应用程序提供一组应用程序接口（API），称为套接字接口（英语：socket API）。应用程序可以通过套接字接口，来使用网络套接字，以进行数据交换。最早的套接字接口来自于4.2 BSD，因此现代常见的套接字接口大多源自Berkeley套接字（Berkeley sockets）标准。在套接字接口中，以&lt;strong&gt;IP地址&lt;/strong&gt;及&lt;strong&gt;通信端口&lt;/strong&gt;组成套接字地址（socket address）。远程的套接字地址，以及本地的套接字地址完成连接后，再加上&lt;strong&gt;使用的协议&lt;/strong&gt;（protocol），这个&lt;strong&gt;五元组&lt;/strong&gt;（five-element tuple)，作为&lt;strong&gt;套接字对&lt;/strong&gt;（socket pairs），之后就可以彼此交换数据。例如，在同一台计算机上，TCP协议与UDP协议可以同时使用相同的port而互不干扰。 操作系统根据套接字地址，可以决定应该将数据送达特定的进程或线程。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="网络通信" scheme="bygeek.cn/categories/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
+    
+    
+      <category term="socket" scheme="bygeek.cn/tags/socket/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WPF自定义控件和依赖项属性浅析</title>
+    <link href="bygeek.cn/2018/02/28/WPF-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%92%8C%E4%BE%9D%E8%B5%96%E9%A1%B9%E5%B1%9E%E6%80%A7%E6%B5%85%E6%9E%90/"/>
+    <id>bygeek.cn/2018/02/28/WPF-自定义控件和依赖项属性浅析/</id>
+    <published>2018-02-28T00:18:35.000Z</published>
+    <updated>2018-03-11T12:58:33.435Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>依赖项属性是WPF引入的一个新特性，它扩展了普通的CLR属性。同时依赖项属性有以下优点：减少内存占用，值继承，自动通知等。</p><a id="more"></a><h2 id="依赖项属性与普通CLR属性区别和优点"><a href="#依赖项属性与普通CLR属性区别和优点" class="headerlink" title="依赖项属性与普通CLR属性区别和优点"></a>依赖项属性与普通CLR属性区别和优点</h2><p>它与CLR属性的区别是：</p><ul><li>CLR属性是类中的一个成员，可以直接读取，而依赖项属性要通过GetValue() 方法动态取得</li><li>当你设置CLR属性时，CLR属性存储在对象的field中。依赖项属性必须声明为public static readonly，存储在基类DependencyObject中的Dictionary中。</li></ul><p>依赖项属性带来的好处如下：</p><ul><li><p>减少内存占用</p><blockquote><p>It’s a huge dissipation to store a field for each property when you think that over 90% of the properties of a UI control typically stay at its initial values. Dependency properties solve these problems by only store modified properties in the instance. The default values are stored once within the dependency property.</p></blockquote></li><li><p>值继承</p><blockquote><p>When you access a dependency property the value is resolved by using a value resolution strategy. If no local value is set, the dependency property navigates up the logical tree until it finds a value. When you set the FontSize on the root element it applies to all textblocks below except you override the value. </p></blockquote></li><li><p>变化通知</p><blockquote><p>Dependency properties have a built-in change notification mechanism. By registering a callback in the property metadata you get notified, when the value of the property has been changed. This is also used by the databinding.</p></blockquote></li></ul><p>下面编写一个自定义控件，并给自定义控件加入几个依赖项属性。</p><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>在接下来的例子中，我们将自定义一个ChkButton控件，该控件左边是一个TextBlock，右边是一个Checkbox。并且定义两个依赖项属性：IsChecked，ChkVisibility。</p><ol><li><p>创建自定义控件(Custom Control)。</p><p><img src="./01_new_custom_control.png" alt="new_custom_control"></p><p>创建成功后会在工程目录下多了一个theme的文件夹，同时在该文件夹内有Generic.xaml。该xaml是一个ResourceDictionary，在AssemblyInfo文件中会加载该xaml资源。</p><p><img src="./02_generic_xaml.png" alt="02_theme"></p></li><li><p>在Generic.xaml中，我们可以定义该Custom Control的ControlTemplate。</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Style</span> <span class="attr">TargetType</span>=<span class="string">"&#123;x:Type local:ChkButton&#125;"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">Setter</span> <span class="attr">Property</span>=<span class="string">"Template"</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Setter.Value</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">ControlTemplate</span> <span class="attr">TargetType</span>=<span class="string">"&#123;x:Type local:ChkButton&#125;"</span>&gt;</span></span></span><br><span class="line"><span class="undefined">                    &lt;Border</span></span><br><span class="line"><span class="undefined">                        Background="&#123;TemplateBinding Background&#125;"</span></span><br><span class="line"><span class="undefined">                        BorderBrush="&#123;TemplateBinding BorderBrush&#125;"</span></span><br><span class="line"><span class="undefined">                        BorderThickness="&#123;TemplateBinding BorderThickness&#125;"&gt;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="xml">                        <span class="tag">&lt;<span class="name">Grid</span>&gt;</span></span></span><br><span class="line"><span class="xml">                            <span class="tag">&lt;<span class="name">Grid.ColumnDefinitions</span>&gt;</span></span></span><br><span class="line"><span class="xml">                                <span class="tag">&lt;<span class="name">ColumnDefinition</span> <span class="attr">Width</span>=<span class="string">"*"</span> /&gt;</span></span></span><br><span class="line"><span class="xml">                                <span class="tag">&lt;<span class="name">ColumnDefinition</span> <span class="attr">Width</span>=<span class="string">"auto"</span> /&gt;</span></span></span><br><span class="line"><span class="xml">                            <span class="tag">&lt;/<span class="name">Grid.ColumnDefinitions</span>&gt;</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">                            &lt;TextBlock</span></span><br><span class="line"><span class="undefined">                                Name="PART_txt"</span></span><br><span class="line"><span class="undefined">                                Margin="3,3"</span></span><br><span class="line"><span class="undefined">                                HorizontalAlignment="Right"</span></span><br><span class="line"><span class="undefined">                                VerticalAlignment="Center"</span></span><br><span class="line"><span class="undefined">                                Text="&#123;TemplateBinding Content&#125;" /&gt;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">                                &lt;CheckBox</span></span><br><span class="line"><span class="undefined">                                    Name="PART_chk"</span></span><br><span class="line"><span class="undefined">                                    Grid.Column="1"</span></span><br><span class="line"><span class="undefined">                                    HorizontalAlignment="Center"</span></span><br><span class="line"><span class="undefined">                                    VerticalAlignment="Center"</span></span><br><span class="line"><span class="undefined">                                    IsChecked="&#123;Binding RelativeSource=&#123;RelativeSource TemplatedParent&#125;, Path=IsChecked, Mode=TwoWay&#125;"</span></span><br><span class="line"><span class="undefined">                                    Visibility="Collapsed" /&gt;</span></span><br><span class="line"><span class="xml">                        <span class="tag">&lt;/<span class="name">Grid</span>&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;/<span class="name">Border</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;/<span class="name">ControlTemplate</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">Setter.Value</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">Setter</span>&gt;</span></span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">Style</span>&gt;</span></span><br></pre></td></tr></table></figure><p>​</p><ul><li>先在该xaml中引入namespace，如<code>xmlns:local=&quot;clr-namespace:ButtonTest1&quot;</code></li><li>该ControlTemplate中的Checkbox的IsChecked属性双向绑定与ChkButton的自定义的IsChecked依赖项属性，从而将内部的checkbox的checked属性开放出来。</li></ul></li><li><p>定义ChkButton的依赖项属性：IsChecked, ChkVisibility。 </p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">readonly</span> DependencyProperty IsCheckedProperty = DependencyProperty.Register(<span class="string">"IsChecked"</span>, <span class="keyword">typeof</span>(Boolean), <span class="keyword">typeof</span>(ChkButton));</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">bool</span> IsChecked</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">get</span> &#123; <span class="keyword">return</span> (<span class="keyword">bool</span>)GetValue(IsCheckedProperty); &#125;</span><br><span class="line">            <span class="keyword">set</span> &#123; SetValue(IsCheckedProperty, <span class="keyword">value</span>); &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">readonly</span> DependencyProperty ChkVisibilityProperty = DependencyProperty.Register(<span class="string">"ChkVisibility"</span>, <span class="keyword">typeof</span>(Visibility), <span class="keyword">typeof</span>(ChkButton),</span><br><span class="line">            <span class="keyword">new</span> PropertyMetadata(Visibility.Collapsed, <span class="keyword">new</span> PropertyChangedCallback((obj, args) =&gt;</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">var</span> btn = (ChkButton)obj;</span><br><span class="line">                btn.ApplyTemplate();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">var</span> textblock = (TextBlock)btn.GetTemplateChild(<span class="string">"PART_txt"</span>);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">var</span> checkbox = (CheckBox)btn.GetTemplateChild(<span class="string">"PART_chk"</span>);</span><br><span class="line">                checkbox.Visibility = (Visibility)args.NewValue;</span><br><span class="line">                <span class="keyword">if</span> (checkbox.Visibility == Visibility.Visible)</span><br><span class="line">                &#123;</span><br><span class="line">                    textblock.HorizontalAlignment = HorizontalAlignment.Right;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    textblock.HorizontalAlignment = HorizontalAlignment.Center;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)));</span><br><span class="line">        <span class="keyword">public</span> Visibility ChkVisibility</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">get</span> &#123; <span class="keyword">return</span> (Visibility)GetValue(ChkVisibilityProperty); &#125;</span><br><span class="line">            <span class="keyword">set</span> &#123; SetValue(ChkVisibilityProperty, <span class="keyword">value</span>); &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure><ul><li>在ControlTemplate中给每一个Part定义一个名称，这样可以使用GetTemplateChild方法来获取到引用，注意在调用之前，必须先调用控件的ApplyTemplate方法。</li></ul></li><li><p>我们希望在点击ChkButton的TextBlock部分时，响应Button的Click事件，在点击Checkbox部分时，不触发Click事件。但是由于WPF中event的冒泡特性，也会传递到ChkButton。我们可以在ChkButton的构造函数设置为该事件已处理。</p>   <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ChkButton</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.Click += (sender, args) =&gt;</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (args.OriginalSource <span class="keyword">is</span> CheckBox)</span><br><span class="line">                &#123;</span><br><span class="line">                    args.Handled = <span class="literal">true</span>;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure><p>   ​</p></li><li><p>ChkButton已经创建好了。在xaml中可以使用。</p>   <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">local:ChkButton</span></span></span><br><span class="line"><span class="tag">            <span class="attr">x:Name</span>=<span class="string">"chkbtn1"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">Width</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">Height</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">Margin</span>=<span class="string">"5"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">Background</span>=<span class="string">"LightBlue"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">ChkVisibility</span>=<span class="string">"Collapsed"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">Click</span>=<span class="string">"ChkButton_Click"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">Content</span>=<span class="string">"another text"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">IsChecked</span>=<span class="string">"False"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextBlock</span> <span class="attr">Margin</span>=<span class="string">"5"</span> <span class="attr">Text</span>=<span class="string">"&#123;Binding ElementName=chkbtn1, Path=IsChecked&#125;"</span> /&gt;</span></span><br></pre></td></tr></table></figure><p>   ​</p></li></ol><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul><li><a href="https://wpftutorial.net/DependencyProperties.html" target="_blank" rel="noopener">https://wpftutorial.net/DependencyProperties.html</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/framework/wpf/advanced/dependency-properties-overview" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/dotnet/framework/wpf/advanced/dependency-properties-overview</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;依赖项属性是WPF引入的一个新特性，它扩展了普通的CLR属性。同时依赖项属性有以下优点：减少内存占用，值继承，自动通知等。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="WPF" scheme="bygeek.cn/categories/WPF/"/>
+    
+    
+      <category term="WPF" scheme="bygeek.cn/tags/WPF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客迁移记录</title>
+    <link href="bygeek.cn/2018/02/26/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E8%AE%B0%E5%BD%95/"/>
+    <id>bygeek.cn/2018/02/26/博客迁移记录/</id>
+    <published>2018-02-26T03:01:51.000Z</published>
+    <updated>2018-03-11T12:58:33.438Z</updated>
+    
+    <content type="html"><![CDATA[<p>这几天将博客的主题换成了next。本来使用的是yilia主题，后来发现渲染有序列表会出现换行的问题，同时yilia已经放弃维护了，next主题也很不错，果断换之。使用hexo框架换个主题简直不要太简单，就不多说了。本文是简单记录下博客迁移的过程。</p><a id="more"></a><p>关于如何使用hexo和github pages来搭建博客，网络上有很多教程。我主要是参考 <a href="http://crazymilk.github.io/2015/12/28/GitHub-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2" target="_blank" rel="noopener">此博文</a> 。这篇博文详细记录了如何建立，部署，同时如何进行博客迁移。摘录部分内容如下：</p><blockquote><h3 id="4-2-我的博客搭建流程"><a href="#4-2-我的博客搭建流程" class="headerlink" title="4.2 我的博客搭建流程"></a>4.2 我的博客搭建流程</h3><ol><li>创建仓库，CrazyMilk.github.io；</li><li>创建两个分支：master 与 hexo；</li><li>设置hexo为默认分支（因为我们只需要手动管理这个分支上的Hexo网站文件）；</li><li>使用git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:CrazyMilk/CrazyMilk.github.io.git拷贝仓库；</li><li>在本地CrazyMilk.github.io文件夹下通过Git bash依次执行npm install hexo、hexo init、npm install 和 npm install hexo-deployer-git（此时当前分支应显示为hexo）;</li><li>修改_config.yml中的deploy参数，分支应为master；</li><li>依次执行git add .、git commit -m “…”、git push origin hexo提交网站相关的文件；</li><li>执行hexo generate -d生成网站并部署到GitHub上。</li></ol><p>这样一来，在GitHub上的CrazyMilk.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。完美( •̀ ω •́ )y！</p><h3 id="4-3-我的博客管理流程"><a href="#4-3-我的博客管理流程" class="headerlink" title="4.3 我的博客管理流程"></a>4.3 我的博客管理流程</h3><h4 id="4-3-1-日常修改"><a href="#4-3-1-日常修改" class="headerlink" title="4.3.1 日常修改"></a>4.3.1 日常修改</h4><p>在本地对博客进行修改（添加新博文、修改样式等等）后，通过下面的流程进行管理：</p><ol><li>依次执行git add .、git commit -m “…”、git push origin hexo指令将改动推送到GitHub（此时当前分支应为hexo）；</li><li>然后才执行hexo generate -d发布网站到master分支上。</li></ol><p>虽然两个过程顺序调转一般不会有问题，不过逻辑上这样的顺序是绝对没问题的（例如突然死机要重装了，悲催….的情况，调转顺序就有问题了）。</p><h4 id="4-3-2-本地资料丢失"><a href="#4-3-2-本地资料丢失" class="headerlink" title="4.3.2 本地资料丢失"></a>4.3.2 本地资料丢失</h4><p>当重装电脑之后，或者想在其他电脑上修改博客，可以使用下列步骤：</p><ol><li>使用git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:CrazyMilk/CrazyMilk.github.io.git拷贝仓库（默认分支为hexo）；</li><li>在本地新拷贝的CrazyMilk.github.io文件夹下通过Git bash依次执行下列指令：npm install hexo、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。</li></ol></blockquote><p>这样一来，hexo分支用于存放markdown等原文件，master分支用来存放生成之后的html等静态页面，可以方便的进行博客迁移和管理。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这几天将博客的主题换成了next。本来使用的是yilia主题，后来发现渲染有序列表会出现换行的问题，同时yilia已经放弃维护了，next主题也很不错，果断换之。使用hexo框架换个主题简直不要太简单，就不多说了。本文是简单记录下博客迁移的过程。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="博客" scheme="bygeek.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="hexo" scheme="bygeek.cn/tags/hexo/"/>
+    
+      <category term="next" scheme="bygeek.cn/tags/next/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何删除github敏感文件</title>
+    <link href="bygeek.cn/2018/02/24/%E5%A6%82%E4%BD%95%E5%88%A0%E9%99%A4github%E6%95%8F%E6%84%9F%E6%96%87%E4%BB%B6/"/>
+    <id>bygeek.cn/2018/02/24/如何删除github敏感文件/</id>
     <published>2018-02-24T08:35:47.000Z</published>
-    <updated>2018-02-25T11:09:21.016Z</updated>
+    <updated>2018-03-11T12:58:33.439Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>由于当初建立博客的失误，我将一些不可名状的东西上传到了github中，今天才发现，吓的我赶紧找方法如何删除。google了一番之后终于找到了一个repo-cleaner工具：<a href="https://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">BFG</a>。 下面就简单记录下如何删除已经commit到服务器上的文件，同时删除commit记录。</p><a id="more"></a><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol><li><p>在你的local working directory中将你要删除的文件删除，正常commit并push到remote，因为BFG工具会使用最新的一次commit。</p><blockquote><p>The BFG treats you like a reformed alcoholic: you’ve made some mistakes in the past, but now you’ve cleaned up your act. Thus the BFG assumes that your latest commit is a <em>good</em> one, with none of the dirty files you want removing from your history still in it. This assumption by the BFG protects your work, and gives you peace of mind knowing that the BFG is <em>only</em> changing your repo history, not meddling with the <em>current</em> files of your project.</p></blockquote></li><li><p>下载BFG工具jar包，<a href="http://repo1.maven.org/maven2/com/madgag/bfg/1.13.0/bfg-1.13.0.jar" target="_blank" rel="noopener">链接</a> 。（当然要先装java runtime）:)</p></li><li><p>下载git repo的bare repository：<code>git clone --mirror git://example.com/some-repo.git</code></p><p>bare repository并不能看到实际的repo文件，但是却包含了repo的全部数据。下载完之后，最好备份一下。</p></li><li><p>在目录下执行：<code>java -jar bfg.jar --delete-files filename some-repo.git</code>。</p><ul><li>后面这个参数为刚刚下载到本地的repo目录，不是完整的git地址。</li><li>filename为要删除的文件，注意，该操作会将根目录下及根目录下的子目录的相同filename的文件都删除</li><li>如果想删除多个文件，filename参数可以写成<code>{file1,file2}</code>。</li></ul></li><li><p>进入到刚下好的repo目录中，执行：</p><p><code>git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</code></p></li><li><p>将修改的repo push到remote：<code>git push</code>。</p></li><li><p>push成功之后查看remote中是否文件已删除，并且与该文件相关的commit的历史记录也删除了。</p></li></ol><h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ul><li><a href="https://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">bfg-repo-cleaner</a></li><li><a href="https://help.github.com/articles/removing-sensitive-data-from-a-repository/" target="_blank" rel="noopener">Removing sensitive data from a repository</a></li></ul><p>下篇博客预告，总结下博客迁移的步骤吧，今天又踩了以前踩过的坑:)</p>]]></content>
     
@@ -32,30 +251,38 @@
     </summary>
     
     
+      <category term="github" scheme="bygeek.cn/tags/github/"/>
+    
+      <category term="bfg" scheme="bygeek.cn/tags/bfg/"/>
+    
   </entry>
   
   <entry>
     <title>onion architecture</title>
-    <link href="http://yoursite.com/2018/02/24/onion-architecture/"/>
-    <id>http://yoursite.com/2018/02/24/onion-architecture/</id>
+    <link href="bygeek.cn/2018/02/24/onion-architecture/"/>
+    <id>bygeek.cn/2018/02/24/onion-architecture/</id>
     <published>2018-02-24T01:30:17.000Z</published>
-    <updated>2018-02-25T11:11:27.444Z</updated>
+    <updated>2018-03-11T12:58:33.438Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="The-Onion-Architecture"><a href="#The-Onion-Architecture" class="headerlink" title="The Onion Architecture"></a>The Onion Architecture</h1><p>传统的三层架构中数据位于最核心的地方，而洋葱模型将一些UI，DB这些最可能经常要变化的东西放在外圈，同时外圈的layer依赖于里圈的东西。</p><a id="more"></a><h2 id="传统的三层架构"><a href="#传统的三层架构" class="headerlink" title="传统的三层架构"></a>传统的三层架构</h2><p>一层只能调用下一层，不能跨层调用，比如UI只能调用Business Logic 层.</p><p><img src="http://orafj4489.bkt.clouddn.com/traditional_layered_architecture.png" alt="traditional_layered_architecture"></p><h2 id="洋葱架构"><a href="#洋葱架构" class="headerlink" title="洋葱架构"></a>洋葱架构</h2><p>外圈的层可以调用内圈的层</p><p><img src="http://orafj4489.bkt.clouddn.com/onion_architecture.png" alt="onion_architecture"></p><h2 id="洋葱架构要点"><a href="#洋葱架构要点" class="headerlink" title="洋葱架构要点"></a>洋葱架构要点</h2><ul><li>The application is built around an independent object model</li><li>Inner layers define interfaces.  Outer layers implement interfaces</li><li>Direction of coupling is toward the center</li><li>All application core code can be compiled and run separate from infrastructure</li></ul><p>本文摘录<a href="http://jeffreypalermo.com/blog/the-onion-architecture-part-1/" target="_blank" rel="noopener">地址</a></p>]]></content>
+    <content type="html"><![CDATA[<p>传统的三层架构中数据位于最核心的地方，而洋葱模型将一些UI，DB这些最可能经常要变化的东西放在外圈，同时外圈的layer依赖于里圈的东西。</p><a id="more"></a><h2 id="传统的三层架构"><a href="#传统的三层架构" class="headerlink" title="传统的三层架构"></a>传统的三层架构</h2><p>一层只能调用下一层，不能跨层调用，比如UI只能调用Business Logic 层.</p><p><img src="http://orafj4489.bkt.clouddn.com/traditional_layered_architecture.png" alt="traditional_layered_architecture"></p><h2 id="洋葱架构"><a href="#洋葱架构" class="headerlink" title="洋葱架构"></a>洋葱架构</h2><p>外圈的层可以调用内圈的层</p><p><img src="http://orafj4489.bkt.clouddn.com/onion_architecture.png" alt="onion_architecture"></p><h2 id="洋葱架构要点"><a href="#洋葱架构要点" class="headerlink" title="洋葱架构要点"></a>洋葱架构要点</h2><ul><li>The application is built around an independent object model</li><li>Inner layers define interfaces.  Outer layers implement interfaces</li><li>Direction of coupling is toward the center</li><li>All application core code can be compiled and run separate from infrastructure</li></ul><p>本文摘录<a href="http://jeffreypalermo.com/blog/the-onion-architecture-part-1/" target="_blank" rel="noopener">地址</a></p>]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;The-Onion-Architecture&quot;&gt;&lt;a href=&quot;#The-Onion-Architecture&quot; class=&quot;headerlink&quot; title=&quot;The Onion Architecture&quot;&gt;&lt;/a&gt;The Onion Architecture&lt;/h1&gt;&lt;p&gt;传统的三层架构中数据位于最核心的地方，而洋葱模型将一些UI，DB这些最可能经常要变化的东西放在外圈，同时外圈的layer依赖于里圈的东西。&lt;/p&gt;
+      &lt;p&gt;传统的三层架构中数据位于最核心的地方，而洋葱模型将一些UI，DB这些最可能经常要变化的东西放在外圈，同时外圈的layer依赖于里圈的东西。&lt;/p&gt;
     
     </summary>
     
+    
+      <category term="architecture" scheme="bygeek.cn/tags/architecture/"/>
+    
+      <category term="software" scheme="bygeek.cn/tags/software/"/>
     
   </entry>
   
   <entry>
     <title>blog plan</title>
-    <link href="http://yoursite.com/2018/02/23/blog-plan/"/>
-    <id>http://yoursite.com/2018/02/23/blog-plan/</id>
+    <link href="bygeek.cn/2018/02/23/blog-plan/"/>
+    <id>bygeek.cn/2018/02/23/blog-plan/</id>
     <published>2018-02-23T02:38:11.000Z</published>
     <updated>2018-02-25T09:43:32.543Z</updated>
     
@@ -76,10 +303,10 @@
   
   <entry>
     <title>2018-new-year</title>
-    <link href="http://yoursite.com/2018/02/23/2018-new-year/"/>
-    <id>http://yoursite.com/2018/02/23/2018-new-year/</id>
+    <link href="bygeek.cn/2018/02/23/2018-new-year/"/>
+    <id>bygeek.cn/2018/02/23/2018-new-year/</id>
     <published>2018-02-23T00:58:30.000Z</published>
-    <updated>2018-02-25T11:11:52.050Z</updated>
+    <updated>2018-03-11T12:58:33.419Z</updated>
     
     <content type="html"><![CDATA[<p>2018年上班第一天。</p><a id="more"></a><p>前些日子一直想做点开年计划，今天趁着不那么忙，把这些计划记录到自己的博客中。希望自己在这一年中能坚持做下来。</p><ul><li>跑步减肥，目标是73KG。前几天搬家，越来越意识到自己真实越来越胖了</li><li>把博客运行起来。想来这个博客搭建好之后都快一年了，内容还只有first-blog-test。。。</li><li>看书，专业书和自己买的两本社科书。关于要看的书，再写一遍博文描述一下。</li><li>开发一个能上线的小程序/app，或者有自己的一个开源项目。</li><li>攒钱去一趟香港旅游。</li></ul><p>2018/2/23 于公司</p>]]></content>
     
@@ -89,13 +316,17 @@
     
     </summary>
     
+      <category term="notes" scheme="bygeek.cn/categories/notes/"/>
+    
+    
+      <category term="plan" scheme="bygeek.cn/tags/plan/"/>
     
   </entry>
   
   <entry>
     <title>blog migration test</title>
-    <link href="http://yoursite.com/2017/11/08/blog-migration-test/"/>
-    <id>http://yoursite.com/2017/11/08/blog-migration-test/</id>
+    <link href="bygeek.cn/2017/11/08/blog-migration-test/"/>
+    <id>bygeek.cn/2017/11/08/blog-migration-test/</id>
     <published>2017-11-08T02:31:35.000Z</published>
     <updated>2018-02-25T09:43:32.542Z</updated>
     
@@ -117,8 +348,8 @@
   
   <entry>
     <title>image test</title>
-    <link href="http://yoursite.com/2017/06/10/image-test/"/>
-    <id>http://yoursite.com/2017/06/10/image-test/</id>
+    <link href="bygeek.cn/2017/06/10/image-test/"/>
+    <id>bygeek.cn/2017/06/10/image-test/</id>
     <published>2017-06-09T16:22:42.000Z</published>
     <updated>2018-02-25T09:43:32.543Z</updated>
     
@@ -136,10 +367,10 @@
   
   <entry>
     <title>my first blog</title>
-    <link href="http://yoursite.com/2017/05/31/my-first-blog/"/>
-    <id>http://yoursite.com/2017/05/31/my-first-blog/</id>
+    <link href="bygeek.cn/2017/05/31/my-first-blog/"/>
+    <id>bygeek.cn/2017/05/31/my-first-blog/</id>
     <published>2017-05-31T15:37:54.000Z</published>
-    <updated>2018-02-25T09:43:32.543Z</updated>
+    <updated>2018-03-11T12:58:33.437Z</updated>
     
     <content type="html"><![CDATA[<p>终于搞定了一些前几天困扰的问题了，一个是头像无法加载的问题，还有一个是点击所有文章提示模块缺失的问题。<br><a id="more"></a><br>南京的夜晚，夏日炎炎，即使干坐了，也止不住的流汗。<br>先占个坑，等有时间再详细说下问题怎么解决的吧。</p>]]></content>
     
@@ -149,13 +380,15 @@
     
     </summary>
     
+      <category term="notes" scheme="bygeek.cn/categories/notes/"/>
+    
     
   </entry>
   
   <entry>
     <title>my fisrt post</title>
-    <link href="http://yoursite.com/2017/05/26/my-fisrt-post/"/>
-    <id>http://yoursite.com/2017/05/26/my-fisrt-post/</id>
+    <link href="bygeek.cn/2017/05/26/my-fisrt-post/"/>
+    <id>bygeek.cn/2017/05/26/my-fisrt-post/</id>
     <published>2017-05-26T14:48:59.000Z</published>
     <updated>2018-02-25T09:43:32.543Z</updated>
     
