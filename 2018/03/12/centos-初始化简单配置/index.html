@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="byGeek&#39;s Playground">
 <meta property="og:description" content="centos简单折腾记录。 新建用户 使用root用户登录到server端。 新建用户账号：adduser robert 设置密码: passwd robert  增加用户到sudoer中root用户拥有系统的最高权限，但是为了系统的安全性，一般不会直接使用root用户。相反我们会使用sudo命令来暂时提高当前用户的权限。下一步我们将新建的用户robert加入到sudoer中。在centos中，在">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-18T11:10:06.952Z">
+<meta property="og:updated_time" content="2018-03-18T13:08:20.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos 初始化简单配置">
 <meta name="twitter:description" content="centos简单折腾记录。 新建用户 使用root用户登录到server端。 新建用户账号：adduser robert 设置密码: passwd robert  增加用户到sudoer中root用户拥有系统的最高权限，但是为了系统的安全性，一般不会直接使用root用户。相反我们会使用sudo命令来暂时提高当前用户的权限。下一步我们将新建的用户robert加入到sudoer中。在centos中，在">
@@ -408,7 +408,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -aG wheel robert</span><br></pre></td></tr></table></figure>
 <p>测试是否成功。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su robert</span><br><span class="line">sudo ls -al /root</span><br></pre></td></tr></table></figure>
-<h3 id="修改SSH默认端口"><a href="#修改SSH默认端口" class="headerlink" title="修改SSH默认端口"></a>修改SSH默认端口</h3><p>ssh是一个安全的加密协议，用于主机之间的通信。为了加强系统的安全性，修改默认的ssh的22端口。</p>
+<h2 id="修改SSH默认端口"><a href="#修改SSH默认端口" class="headerlink" title="修改SSH默认端口"></a>修改SSH默认端口</h2><p>ssh是一个安全的加密协议，用于主机之间的通信。为了加强系统的安全性，修改默认的ssh的22端口。</p>
 <ol>
 <li><p>修改ssh_config文件中的默认端口号</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
@@ -633,7 +633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#新建用户"><span class="nav-number">1.</span> <span class="nav-text">新建用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增加用户到sudoer中"><span class="nav-number">2.</span> <span class="nav-text">增加用户到sudoer中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改SSH默认端口"><span class="nav-number">2.1.</span> <span class="nav-text">修改SSH默认端口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">3.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#新建用户"><span class="nav-number">1.</span> <span class="nav-text">新建用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增加用户到sudoer中"><span class="nav-number">2.</span> <span class="nav-text">增加用户到sudoer中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改SSH默认端口"><span class="nav-number">3.</span> <span class="nav-text">修改SSH默认端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>
