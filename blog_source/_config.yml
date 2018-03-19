@@ -102,4 +102,10 @@ sitemap:
   path: sitemap.xml
 baidusitemap:
   path: baidusitemap.xml
+  
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
 # add by robert at 2018/02/26 end
