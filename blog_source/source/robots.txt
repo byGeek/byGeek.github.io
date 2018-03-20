@@ -11,5 +11,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: https://bygeek.github.io/sitemap.xml
-Sitemap: https://bygeek.github.io/baidusitemap.xml
+Sitemap: https://bygeek.cn/sitemap.xml
+Sitemap: https://bygeek.cn/baidusitemap.xml
