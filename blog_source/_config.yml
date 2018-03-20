@@ -114,7 +114,7 @@ feed:
   path: atom.xml
   limit: 20
   hub:
-  content:
+  content: true
   content_limit: 140
   content_limit_delim: ' '
 # add by robert at 2018/02/26 end
