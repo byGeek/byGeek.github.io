@@ -5,7 +5,7 @@
 # Site
 title: byGeek's Playground
 subtitle:
-description: 记录世界，记录自己
+description: Never too late to lose weight!!!
 author: byGeek
 #language: zh
 language: zh-Hans
@@ -13,7 +13,7 @@ timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: bygeek.cn
+url: https://bygeek.cn
 root: /
 permalink: :year/:month/:day/:title/
 #permalink: :title/
