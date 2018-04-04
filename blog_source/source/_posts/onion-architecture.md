@@ -4,6 +4,8 @@ date: 2018-02-24 09:30:17
 tags:
 - architecture
 - software
+categories:
+- coding
 ---
 
 传统的三层架构中数据位于最核心的地方，而洋葱模型将一些UI，DB这些最可能经常要变化的东西放在外圈，同时外圈的layer依赖于里圈的东西。

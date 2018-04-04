@@ -4,7 +4,7 @@ date: 2018-03-12 10:33:40
 tags:
 - CI
 categories:
-- CI
+- tutorial
 keywords:
 description:
 ---

@@ -4,6 +4,8 @@ date: 2018-02-24 16:35:47
 tags:
 - github
 - bfg
+categories:
+- tutorial
 ---
 
 ### 前言

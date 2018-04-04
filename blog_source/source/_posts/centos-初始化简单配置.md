@@ -5,7 +5,7 @@ tags:
 - linux
 - centos
 categories:
-- linux
+- tutorial
 keywords:
 description:
 
