@@ -4,7 +4,7 @@ date: 2018-03-31 22:02:28
 tags:
 - nas
 categories:
-- nas
+- tutorial
 keywords:
 - nas
 - ddns

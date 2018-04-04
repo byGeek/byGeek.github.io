@@ -3,7 +3,8 @@ title: WPF自定义控件和依赖项属性浅析
 date: 2018-02-28 08:18:35
 tags: 
 - WPF
-categories: WPF
+categories:
+- coding
 keywords:  
 description: 
 

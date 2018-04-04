@@ -4,7 +4,7 @@ date: 2018-03-19 14:22:31
 tags:
 - hexo
 categories:
-- hexo
+- tutorial
 keywords:
 description:
 
