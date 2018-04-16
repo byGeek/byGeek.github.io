@@ -16,7 +16,7 @@ description:
 
 最近打算读读开源项目的源码，正好一年前买的《深入理解Nginx》这本书还一直落灰，就准备读读Nginx的源码吧。在Github下载源码之后，干看代码不好理解，得像个办法Debug啊，于是乎有了用VMware折腾下Ubuntu，学学如何使用GCC和GDB。这就是本文的由来。
 
-
+<!--more-->
 
 VMware傻瓜式的安装教程就不多说了。不过昨天折腾了一晚上竟然没有安装成功，使用的VMware pro 10.0版本，镜像为Ubuntu Desktop 16.04 LTS版本，一直提示`Internal Error`。后来换了VMware pro 12.5版本之后顺利安装。
 
@@ -49,8 +49,4 @@ VMware傻瓜式的安装教程就不多说了。不过昨天折腾了一晚上�
 ### 科学上网问题
 
 有的时候还是需要再虚拟机中共享宿主的科学上网网络的。我们需要为虚拟机配置一个代理。具体参考[此文章](https://www.ctolib.com/topics-114336.html)。
-
-
-
-
 
