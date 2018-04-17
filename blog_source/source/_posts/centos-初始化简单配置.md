@@ -81,6 +81,42 @@ ssh是一个安全的加密协议，用于主机之间的通信。为了加强�
    ssh robert@ip_address -p 10086
    ```
 
+
+
+## 配置公钥登录
+
+在windows上一般使用putty或xshell来作为ssh客户端。这里以xshell为例。在xshell中`Tools->User key Manager->Generate`生成公钥/私钥对。将私钥保存好，同时将公钥复制到剪贴板。
+
+
+
+使用xshell ssh连接到远程主机，在当前用户HOME目录下执行如下命令：
+
+```bash
+cd ~
+mkdir .ssh && chmod 700 .ssh
+touch .ssh/authorized_keys && chmod 600 .ssh/authorized_keys
+```
+
+ssh服务默认使用用户.ssh目录下的authorized_keys中的公钥来进行验证。将上一部复制的公钥复制到authorized_keys文件中。
+
+
+
+如果想配置root也使用公钥登录，需要在root目录下也建立.ssh文件夹和authorized_keys文件。注意，需要更改文件夹和文件权限！
+
+
+
+## 禁止root远程密码登录
+
+修改ssd的配置文件
+
+```bash
+sudo vim /etc/ssh/sshd_config
+```
+
+将`#PermitRootLogin yes`修改为`PermitRootLogin without-password`。注意是修改为without-password，如果直接修改为no，则root公钥也不能登录了。
+
+
+
 ## 参考链接
 
 - [centos wiki](https://wiki.centos.org/HowTos/Network/SecuringSSH)
