@@ -48,12 +48,6 @@ MMF可以提高I/O性能，特别是对于大文件来说。
 
 {% asset_img normal_io.gif 常规IO操作  %}
 
-推荐阅读文章：
-
-- [认真分析mmap：是什么 为什么 怎么用](https://www.cnblogs.com/huxiao-tee/p/4660352.html)
-- [内存映射文件原理探索](https://blog.csdn.net/mg0832058/article/details/5890688)
-- [On Memory Mapped Files](https://ayende.com/blog/162791/on-memory-mapped-files)
-
 
 
 ## .NET中的MemoryMappedFile API
@@ -203,3 +197,11 @@ MemoryMappedFile mmf = MemoryMappedFile.OpenExisting("mmftest", MemoryMappedFile
 
 
 具体参考 [这里](https://msdn.microsoft.com/en-us/library/ms810613.aspx)
+
+
+
+## 推荐阅读
+
+- [认真分析mmap：是什么 为什么 怎么用](https://www.cnblogs.com/huxiao-tee/p/4660352.html)
+- [内存映射文件原理探索](https://blog.csdn.net/mg0832058/article/details/5890688)
+- [On Memory Mapped Files](https://ayende.com/blog/162791/on-memory-mapped-files)
