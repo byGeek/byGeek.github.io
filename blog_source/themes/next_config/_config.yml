@@ -67,7 +67,7 @@ footer:
     # version: true
   # -------------------------------------------------------------
   # Any custom text can be defined here.
-  #custom_text: Hosted by <a target="_blank" href="https://pages.github.com">GitHub Pages</a>
+  custom_text: <a target="_blank" href="http://www.miitbeian.gov.cn">苏ICP备18025743号</a>
 
 # ---------------------------------------------------------------
 # SEO Settings
@@ -100,7 +100,7 @@ menu:
   archives: /archives/ || archive
   categories: /categories/ || th
   tags: /tags/ || tags
-  about: /about/ || user
+  #about: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
