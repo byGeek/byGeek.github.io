@@ -52,6 +52,7 @@ MMF可以提高I/O性能，特别是对于大文件来说。
 
 - [认真分析mmap：是什么 为什么 怎么用](https://www.cnblogs.com/huxiao-tee/p/4660352.html)
 - [内存映射文件原理探索](https://blog.csdn.net/mg0832058/article/details/5890688)
+- [On Memory Mapped Files](https://ayende.com/blog/162791/on-memory-mapped-files)
 
 
 
