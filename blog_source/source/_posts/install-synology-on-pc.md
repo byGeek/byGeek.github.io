@@ -70,7 +70,7 @@ description:
 
 将安装好群晖的笔记本通过千兆有线连接到路由器中。然后再主控机中打开Synology Assist。查找局域网内的群晖，可以看到DHCP后的IP地址。
 
-![local_ip](D:\08_myblog\blog\blog_source\source\_posts\local_ip.png)
+{% asset_img local_ip.png %}
 
 打开浏览器输入URL: `10.0.0.10:5000`，以默认的admin用户登陆。然后再控制面板中找到计划任务。新建计划任务，再用户自定义脚本中填入以下脚本（注意替换），并且设置15分钟执行一次：
 
