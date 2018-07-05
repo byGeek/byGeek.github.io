@@ -42,6 +42,8 @@ Dependency walker主界面如下：
 
 {% asset_img legend2.png %}
 
+我们也可以使用dumpbin命令行工具(linux中使用objdump或readelf)来显示dll中导出的函数。
+
 
 
 [Dependency walker下载地址](http://www.dependencywalker.com/)
