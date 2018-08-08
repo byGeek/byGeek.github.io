@@ -36,6 +36,24 @@ su robert
 sudo ls -al /root
 ```
 
+如果还是提示用户不再sudoer中。那么还需要修改`/etc/sudoers`文件。sudo命令是由该文件来配置哪个用户及用户组可以执行。注意该文件不要随便修改，因为错误的语法错误可能会导致用户无法通过sudo来提升权限。需要通过`visudo`命令来修改。`visudo`命令默认使用vi来打开文件，但是在保存文件的时候会检查配置是否有语法错误。
+
+```shell
+visudo -f /etc/sudoers
+```
+
+找到wheel（可以使用vi中进行搜索字符）。如下面所示，去掉前面的#号，取消该行注释。%wheel表示的是wheel 用户组。参考[链接](https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file-on-ubuntu-and-centos#what-is-visudo)
+
+```shell
+...
+%wheel ALL=(ALL) ALL
+...
+```
+
+然后再测试是否切换到创建的用户，是否能够执行sudo命令。
+
+
+
 ## 修改SSH默认端口
 
 ssh是一个安全的加密协议，用于主机之间的通信。为了加强系统的安全性，修改默认的ssh的22端口。
@@ -121,3 +139,5 @@ sudo vim /etc/ssh/sshd_config
 
 - [centos wiki](https://wiki.centos.org/HowTos/Network/SecuringSSH)
 - [add sudoer](https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-centos-quickstart)
+- [add sudoer 2](https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file-on-ubuntu-and-centos#what-is-visudo)
+
