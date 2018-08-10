@@ -140,4 +140,3 @@ sudo vim /etc/ssh/sshd_config
 - [centos wiki](https://wiki.centos.org/HowTos/Network/SecuringSSH)
 - [add sudoer](https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-centos-quickstart)
 - [add sudoer 2](https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file-on-ubuntu-and-centos#what-is-visudo)
-
