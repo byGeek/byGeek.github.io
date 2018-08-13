@@ -48,9 +48,9 @@ git config --global -e
 
 上面配置了http的代理之后，我们使用http/https协议来clone repo的时候已经有效了，但是如果想在ssh也走代理的话，还需要以下配置。
 
-在windows users 用户目录下生成config文件，如在`C:\Users\your_user_name\.ssh`目录下，找到config文件，如果没有新建一个，写入如下内容：
+在windows users 用户目录下生成config文件，如在`C:\Users\your_user_name\.ssh` 目录下，找到config文件，如果没有新建一个，写入如下内容：
 
-```
+```bash
 Host github.com
 ProxyCommand connect -H 127.0.0.1:1080 %h 22
 ```
