@@ -8,7 +8,8 @@ subtitle:
 description: Never too late to lose weight!!!
 author: byGeek
 #language: zh
-language: zh-Hans
+#language: zh-Hans #for next-theme before v6.0.3
+language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
@@ -65,7 +66,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: next-reloaded
 
 #add by robert for qiniu start
 qiniu:
