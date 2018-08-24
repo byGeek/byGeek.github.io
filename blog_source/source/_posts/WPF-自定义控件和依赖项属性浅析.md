@@ -68,20 +68,20 @@ description:
                            Background="{TemplateBinding Background}"
                            BorderBrush="{TemplateBinding BorderBrush}"
                            BorderThickness="{TemplateBinding BorderThickness}">
-
+   
                            <Grid>
                                <Grid.ColumnDefinitions>
                                    <ColumnDefinition Width="*" />
                                    <ColumnDefinition Width="auto" />
                                </Grid.ColumnDefinitions>
-
+   
                                <TextBlock
                                    Name="PART_txt"
                                    Margin="3,3"
                                    HorizontalAlignment="Right"
                                    VerticalAlignment="Center"
                                    Text="{TemplateBinding Content}" />
-
+   
                                    <CheckBox
                                        Name="PART_chk"
                                        Grid.Column="1"
@@ -102,6 +102,14 @@ description:
    - 先在该xaml中引入namespace，如`xmlns:local="clr-namespace:ButtonTest1"`
    - 该ControlTemplate中的Checkbox的IsChecked属性双向绑定与ChkButton的自定义的IsChecked依赖项属性，从而将内部的checkbox的checked属性开放出来。
 
+   注意，在这里在IsChecked进行Binding时没有使用TemplateBinding，即没有使用下面的写法：
+
+   ```c#
+   IsChecked="{TemplateBinding IsChecked}"
+   ```
+
+   因为TemplateBind只支持单向绑定，而我们要实现双向绑定，只能通过Binding表达式。参见stackoverflow的这个[问题](https://stackoverflow.com/questions/5913176/in-wpf-why-doesnt-templatebinding-work-where-binding-does)。
+
 3. 定义ChkButton的依赖项属性：IsChecked, ChkVisibility。 
 
    ```csharp
@@ -111,15 +119,15 @@ description:
                get { return (bool)GetValue(IsCheckedProperty); }
                set { SetValue(IsCheckedProperty, value); }
            }
-
+   
            public static readonly DependencyProperty ChkVisibilityProperty = DependencyProperty.Register("ChkVisibility", typeof(Visibility), typeof(ChkButton),
                new PropertyMetadata(Visibility.Collapsed, new PropertyChangedCallback((obj, args) =>
                {
                    var btn = (ChkButton)obj;
                    btn.ApplyTemplate();
-
+   
                    var textblock = (TextBlock)btn.GetTemplateChild("PART_txt");
-
+   
                    var checkbox = (CheckBox)btn.GetTemplateChild("PART_chk");
                    checkbox.Visibility = (Visibility)args.NewValue;
                    if (checkbox.Visibility == Visibility.Visible)
@@ -129,7 +137,7 @@ description:
                    else
                    {
                        textblock.HorizontalAlignment = HorizontalAlignment.Center;
-
+   
                    }
                })));
            public Visibility ChkVisibility
@@ -157,8 +165,6 @@ description:
               }
       ```
 
-      ​
-
 5. ChkButton已经创建好了。在xaml中可以使用。
 
       ```xml
@@ -172,16 +178,115 @@ description:
                   Click="ChkButton_Click"
                   Content="another text"
                   IsChecked="False" />
-
+      
               <TextBlock Margin="5" Text="{Binding ElementName=chkbtn1, Path=IsChecked}" />
       ```
 
-      ​
+
+## 改善
+
+### 使用`BooleanToVisibilityConverter`
+
+在上面的代码中，是通过创建一个ChkVisibility的依赖属性来控制是否显示Checkbox的，在PropertyChangedCallback中通过代码来控制Checkbox是否显示。其实我们可以直接通过绑定来实现这个功能。为了更直接的实现这个功能，我们使用一个ValueConvertor来将bool类型转化为Visibility类型。在framework中有一个现成的类：`BooleanToVisibilityConverter`。将其加入到对应的Style的Resource中。
+
+```xaml
+<Style TargetType="{x:Type local:ChkButton}">
+<Style.Resources>
+            <BooleanToVisibilityConverter x:Key="boolToVi" />
+</Style.Resources>
+    ...
+    <CheckBox
+    x:Name="PART_chk"
+    Grid.Column="1"
+    VerticalAlignment="Center"
+    Visibility="{TemplateBinding ShowCheckbox,
+                                 Converter={StaticResource boolToVi}}" 
+    IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, Path=IsChecked}"/>
+    
+    
+</Style>
+```
+
+增加一个ShowCheckBox依赖属性：
+
+```csharp
+public static DependencyProperty ShowCheckboxProperty = DependencyProperty.Register(
+            "ShowCheckbox", typeof(bool), typeof(CustomControl1), new FrameworkPropertyMetadata(true));
+
+        public bool ShowCheckbox
+        {
+            get { return (bool)GetValue(ShowCheckboxProperty); }
+            set { SetValue(ShowCheckboxProperty, value); }
+        }
+```
+
+
+
+### 使用TempatePartAttribute
+
+在建立CustomControl时，经常会使用TemplatePart特性来标识类。这可以算是一种design pattern。
+
+> Control authors apply this attribute to the class definition to inform template authors the types of the parts to use for styling the class. These parts are usually required in the template and have a specific predefined name. There can only be one element with a given name in any template.
+
+在上述的ChkButton中定义了两个PART: PART_btn, PART_chk。按照惯例，part name一般使用`PART_`开头，并并使用const string保存在类中。
+
+```csharp
+[TemplatePart(Name=PART_BTN, Type=typeof(Button))]
+[TemplatePart(Name=PART_CHK, Type=typeof(CheckBox))]
+public class ChkButton : Control
+    {
+        private const string PART_BTN = "PART_btn";
+        private const string PART_CHK = "PART_chk";
+
+        static CustomControl1()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ChkButton), new FrameworkPropertyMetadata(typeof(ChkButton)));
+        }
+
+        private Button _btnPart;
+        private CheckBox _chkPart;
+
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            
+            //alway detach event handlers first
+            if (_btnPart != null)
+            {
+                _btnPart.Click -= OnButtonClick;
+            }
+
+            _btnPart = GetTemplateChild(PART_BTN) as Button;
+            _chkPart = GetTemplateChild(PART_CHK) as CheckBox; 
+
+            //alway check _btnPart/_chkPart is null or not
+            if (_btnPart != null)
+            {
+                _btnPart.Click += OnButtonClick;
+            }
+            if (_chkPart != null)
+            {
+            	//do something here
+            }
+        }
+        
+        ...
+    }
+```
+
+如果在类中要访问PART，则定义private 变量将PART 保存起来，同时重写`OnApplayTemplate`方法。同时在使用PART的时候需要判断是否为null，因为每次在给control ApplyTemplate的时候`OnApplayTemplate`会调用一次。同时注意先注销可能已经绑定的事件。
 
 
 ## 参考链接
 
 - https://wpftutorial.net/DependencyProperties.html
 - https://docs.microsoft.com/en-us/dotnet/framework/wpf/advanced/dependency-properties-overview
+- [https://www.jeff.wilcox.name/2010/04/template-part-tips/](https://www.jeff.wilcox.name/2010/04/template-part-tips/)
+- 系列文章
+  - [https://www.kunal-chowdhury.com/2011/04/how-to-create-custom-control-in.html](https://www.kunal-chowdhury.com/2011/04/how-to-create-custom-control-in.html)
+  - [https://www.kunal-chowdhury.com/2011/04/how-to-design-custom-control-by-editing.html](https://www.kunal-chowdhury.com/2011/04/how-to-design-custom-control-by-editing.html)
+  - [https://www.kunal-chowdhury.com/2011/04/how-to-implement-template-binding-in.html](https://www.kunal-chowdhury.com/2011/04/how-to-implement-template-binding-in.html)
+  - [https://www.codeproject.com/articles/179105/how-to-access-control-template-parts-from-code-beh](https://www.codeproject.com/articles/179105/how-to-access-control-template-parts-from-code-beh)
 
 
