@@ -81,4 +81,4 @@ So the first is the function name which will be used in lua, and the second is t
 
 
 
-Another note, you should export those symbols in c lib mentioned in the first three step and use `extern "C" `to make it follow the C standard if you are using c++.
+Another note, you should export `luaopen_Modulename` method  and use `extern "C" `to modifier all function to make it follow the C standard if you are using c++.
