@@ -14,7 +14,7 @@ description:
 
 
 
-a最近在重构代码的时候遇到一个WPF相关的问题，在使用MVVM pattern时，给WPF RadioButton建立绑定数据源时，理所当然的想到使用boolean类型。但是发生了一个奇怪的现象。废话不多说，直接上sample 代码。
+最近在重构代码的时候遇到一个WPF相关的问题，在使用MVVM pattern时，给WPF RadioButton建立绑定数据源时，理所当然的想到使用boolean类型。但是发生了一个奇怪的现象。废话不多说，直接上sample 代码。
 
 <!--more-->
 
