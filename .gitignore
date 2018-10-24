@@ -8,3 +8,4 @@ db.json
 *.bak
 deployGit/_config.yml
 ./blog_source/themes/next/*
+/blog_source/themes/next-reloaded
