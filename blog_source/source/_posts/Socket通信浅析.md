@@ -50,6 +50,10 @@ Socket本身并不是通信协议，只是定义的一个调用接口(API)，我
 >
 >    Connection not released until both sides do **CLOSE**. Typically client does it, server acks.
 
+用下图来表示：
+
+{% asset_img 04_socket_process.jpg %}
+
 
 
 ## 示例 ##
@@ -220,5 +224,6 @@ Socket本身并不是通信协议，只是定义的一个调用接口(API)，我
 - [MSDN Socket.Poll Method](https://msdn.microsoft.com/en-us/library/system.net.sockets.socket.poll.aspx)
 - [网络套接字 维基](https://zh.wikipedia.org/wiki/%E7%B6%B2%E8%B7%AF%E6%8F%92%E5%BA%A7)
 - [Instantly detect client disconnection from server socket](https://stackoverflow.com/questions/722240/instantly-detect-client-disconnection-from-server-socket)
+- [Socket Programming in C/C++](https://www.geeksforgeeks.org/socket-programming-cc/)
 
 
