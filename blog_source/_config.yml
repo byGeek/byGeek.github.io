@@ -75,8 +75,8 @@ qiniu:
   bucket: blog-image
   access_key: kpsTjiaQEUxejLJw1RkZBlWqSfsaNYmArRpy1eHS
   secret_key: esa-EdbDX3lY3Zng7AHkiUoG4H8T4sCHs1GSkuDp
-  dirPrefix: static
-  urlPrefix: http://orafj4489.bkt.clouddn.com/static
+  dirPrefix: 
+  urlPrefix: http://img.bygeek.cn
   local_dir: cdn
   update_exist: true
   image:
