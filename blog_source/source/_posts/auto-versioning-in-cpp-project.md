@@ -53,14 +53,14 @@ description:
 #define VERSION_REVISION            0
 #define VERSION_BUILD               0
 
-#define VER_FILE_DESCRIPTION_STR    "Description"
+//#define VER_FILE_DESCRIPTION_STR    "Description"  //decription和productionname各自独立，需要单独定义
 #define VER_FILE_VERSION            VERSION_MAJOR, VERSION_MINOR, VERSION_REVISION, VERSION_BUILD
 #define VER_FILE_VERSION_STR        STRINGIZE(VERSION_MAJOR)        \
                                     "." STRINGIZE(VERSION_MINOR)    \
                                     "." STRINGIZE(VERSION_REVISION) \
                                     "." STRINGIZE(VERSION_BUILD)    \
 
-#define VER_PRODUCTNAME_STR         "c_version_binary"
+//#define VER_PRODUCTNAME_STR         "c_version_binary"
 #define VER_PRODUCT_VERSION         VER_FILE_VERSION
 #define VER_PRODUCT_VERSION_STR     VER_FILE_VERSION_STR
 #define VER_ORIGINAL_FILENAME_STR   VER_PRODUCTNAME_STR ".exe"
@@ -88,12 +88,16 @@ description:
 
 然后分别对project1和project2的Resource文件做如下操作：
 
-- include version.h
+- include version.h，定义description和product name
 
   ```cpp
   // Microsoft Visual C++ generated resource script.
   //
   #include "resource.h"
+  
+  #define VER_PRODUCTNAME_STR         "product_name_here"
+  #define VER_FILE_DESCRIPTION_STR    "description_here"
+  
   #include "version.h"
   ```
 
@@ -137,7 +141,11 @@ Build一下工程，并修改version.h头文件，看project1和project2的版�
 
 下次如果要修改版本号，就不用一个个去改每个工程的resource.rc文件了，直接修改version.h即可。
 
+### 进阶
 
+上面的方法需要每次都手动修改version信息，可以利用visual studio中的Build Event自动将version.h信息更新。Share Project Template不支持VS project Build Event，可以将其换正常的Project类型。
+
+具体请参考Code Project的一篇文章：[Automatic Build Versioning in Visual Studio](https://www.codeproject.com/Articles/10313/Automatic-Build-Versioning-in-Visual-Studio).
 
 ### 参考链接
 
