@@ -4,7 +4,7 @@ date: 2018-08-04 11:14:24
 tags:
 - git
 categories:
-- toturial
+- tutorial
 keywords:
 description:
 
