@@ -15,14 +15,14 @@ categories:
 ## 传统的三层架构
 一层只能调用下一层，不能跨层调用，比如UI只能调用Business Logic 层.
 
-![traditional_layered_architecture](http://orafj4489.bkt.clouddn.com/traditional_layered_architecture.png)
+{% asset_img traditional_layered_architecture.png %}
 
 
 
 ## 洋葱架构
 外圈的层可以调用内圈的层
 
-![onion_architecture](http://orafj4489.bkt.clouddn.com/onion_architecture.png)
+{% asset_img onion_architecture.png %}
 
 ## 洋葱架构要点
 
