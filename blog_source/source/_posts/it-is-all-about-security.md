@@ -144,7 +144,11 @@ client代码也很简单，发起pipe connect，之后发送一个简单的messa
 
 ### 什么是Integrity Level
 
-首先先visualize一下Integrity level。我们使用[process explorer](<https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer>)工具来查看，如果没有这一栏，可以在View->Select Columns->Process Image tab中勾选Integrity level。
+[MSDN](<https://docs.microsoft.com/en-us/previous-versions/dotnet/articles/bb625957(v=msdn.10)>)上如是说：
+
+> The integrity level is a representation of the trustworthiness of running application processes and objects, such as files created by the application. The integrity mechanism provides the ability for resource managers, such as the file system, to use pre-defined policies that block processes of lower integrity, or lower trustworthiness, from reading or modifying objects of higher integrity. The integrity mechanism allows the Windows security model to enforce new access control restrictions that cannot be defined by granting user or group permissions in access control lists (ACLs).
+
+抛开定义，首先先visualize一下Integrity level。我们使用[process explorer](<https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer>)工具来查看，如果没有这一栏，可以在View->Select Columns->Process Image tab中勾选Integrity level。
 
 {% asset_img 01_show_integrity_level.png %}
 
@@ -174,3 +178,15 @@ client代码也很简单，发起pipe connect，之后发送一个简单的messa
 这里再多说一句，一些杀毒软件，如360安全卫士会主动拦截SendMessage发出的消息。曾经就遇到过bug排查一天，最后发现是这个问题。
 
 关于详细内容，可以参考《windows via c++》中第四章的内容，中文书名为《windows 核心编程》。
+
+### 什么是UAC
+
+### 什么事ACL
+
+### 参考文档
+
+- [What's New in User Account Control]([https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd446675%28v%3dws.10%29](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd446675(v%3dws.10)))
+
+- [Windows Security Survival Guide](<https://social.technet.microsoft.com/wiki/contents/articles/2275.windows-security-survival-guide.aspx>)
+- [Exploring the Windows Security Survival Guide – Integrity](<https://blogs.technet.microsoft.com/yuridiogenes/2011/04/13/exploring-the-windows-security-survival-guide-integrity/>)
+- [What is the Windows Integrity Mechanism?](<https://docs.microsoft.com/en-us/previous-versions/dotnet/articles/bb625957(v=msdn.10)>)

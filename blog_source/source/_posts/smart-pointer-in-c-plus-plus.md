@@ -11,7 +11,7 @@ keywords:
 description:
 ---
 
-C++ 11中共有四种智能指针(Smart Pointers)：`std::auto_ptr`,`std::unique_ptr`,`std::shared_ptr`,`std::wek_ptr`。其中`std::auto_ptr`是在C++98中就引入的智能指针，在C++11中已经被`std::unique_ptr`所取代。所以本文主要讨论讨论剩下的三种智能指针。
+C++ 11中共有四种智能指针(Smart Pointers)：`std::auto_ptr`,`std::unique_ptr`,`std::shared_ptr`,`std::weak_ptr`。其中`std::auto_ptr`是在C++98中就引入的智能指针，在C++11中已经被`std::unique_ptr`所取代。所以本文主要讨论讨论剩下的三种智能指针。
 
 <!--more-->
 
