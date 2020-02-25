@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bygeek.cn/2020/02/25/change-website-title/</loc>
+    
+    <lastmod>2020-02-25T11:40:14.173Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://bygeek.cn/tags/index.html</loc>
     
     <lastmod>2020-01-31T16:23:02.814Z</lastmod>
@@ -233,14 +240,14 @@
   </url>
   
   <url>
-    <loc>https://bygeek.cn/2017/05/31/my-first-blog/</loc>
+    <loc>https://bygeek.cn/2018/03/19/migration-to-tecent-cvm/</loc>
     
     <lastmod>2020-01-31T16:23:02.638Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://bygeek.cn/2018/03/19/migration-to-tecent-cvm/</loc>
+    <loc>https://bygeek.cn/2017/05/31/my-first-blog/</loc>
     
     <lastmod>2020-01-31T16:23:02.638Z</lastmod>
     
