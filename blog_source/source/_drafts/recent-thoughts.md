@@ -1,0 +1,4 @@
+---
+title: recent-thoughts
+tags:
+---
