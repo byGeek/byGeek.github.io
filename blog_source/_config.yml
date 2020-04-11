@@ -95,7 +95,7 @@ deploy:
   type: git
   # repo: https://github.com/byGeek/byGeek.github.io
   # repo: ssh://git@github.com:byGeek/byGeek.github.io.git
-  repo: ssh://robert@111.231.89.60:10012/home/robert/blog.git
+  repo: ssh://robert@111.231.89.60:22/home/robert/blog.git
   branch: master
  
 # add by robert at 2018/02/26 start
