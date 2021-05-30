@@ -6,8 +6,8 @@
     "version": "3.9.0"
   },
   "dependencies": {
-    "hexo": "^5.3.0",
-    "hexo-blog-encrypt": "^3.1.2",
+    "hexo": "^5.4.0",
+    "hexo-blog-encrypt": "^3.1.6",
     "hexo-deployer-git": "^2.1.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-baidu-sitemap": "^0.1.9",
