@@ -1,121 +1,32 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/favicon-128x128.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-64x64.png?v=6.4.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=6.4.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=6.4.0">
-
-
-  <link rel="mask-icon" href="/favicon-128x128.png?v=6.4.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '6.4.0',
-    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"bygeek.cn","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta name="description" content="最近把家里闲置的一台笔记本装了群晖，并且利用上次再良心云买的域名，添加了外网访问。此博文为记。 安装群晖总体来说用笔记本来安装黑群晖还是比较简单的。具体参考张大妈上的这篇文章。 需要注意的是，本来笔记本是ssd和机械硬盘组的双硬盘，安装好群晖之后，发现只能识别到ssd，无法识别机械硬盘。想着ssd用来做硬盘有点浪费，所以我将笔记本的ssd拆下来，又重新安装了一遍，这才识别了机械硬盘。">
-<meta name="keywords" content="nas,ddns">
 <meta property="og:type" content="article">
 <meta property="og:title" content="黑群晖的安装以及设置外网访问">
 <meta property="og:url" content="https://bygeek.cn/2018/03/31/install-synology-on-pc/index.html">
-<meta property="og:site_name" content="萝卜头的日志">
+<meta property="og:site_name" content="bygeek&#39;s Playground">
 <meta property="og:description" content="最近把家里闲置的一台笔记本装了群晖，并且利用上次再良心云买的域名，添加了外网访问。此博文为记。 安装群晖总体来说用笔记本来安装黑群晖还是比较简单的。具体参考张大妈上的这篇文章。 需要注意的是，本来笔记本是ssd和机械硬盘组的双硬盘，安装好群晖之后，发现只能识别到ssd，无法识别机械硬盘。想着ssd用来做硬盘有点浪费，所以我将笔记本的ssd拆下来，又重新安装了一遍，这才识别了机械硬盘。">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bygeek.cn/2018/03/31/install-synology-on-pc/synology_login.png">
 <meta property="og:image" content="https://bygeek.cn/2018/03/31/install-synology-on-pc/domain.png">
 <meta property="og:image" content="https://bygeek.cn/2018/03/31/install-synology-on-pc/find_id.png">
@@ -129,34 +40,28 @@
 <meta property="og:image" content="https://bygeek.cn/2018/03/31/install-synology-on-pc/import_success.png">
 <meta property="og:image" content="https://bygeek.cn/2018/03/31/install-synology-on-pc/url.png">
 <meta property="og:image" content="https://bygeek.cn/2018/03/31/install-synology-on-pc/disable_ssh.png">
-<meta property="og:updated_time" content="2020-01-31T16:23:02.585Z">
+<meta property="article:published_time" content="2018-03-31T14:02:28.000Z">
+<meta property="article:modified_time" content="2021-05-30T13:08:49.942Z">
+<meta property="article:author" content="byGeek">
+<meta property="article:tag" content="nas">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="黑群晖的安装以及设置外网访问">
-<meta name="twitter:description" content="最近把家里闲置的一台笔记本装了群晖，并且利用上次再良心云买的域名，添加了外网访问。此博文为记。 安装群晖总体来说用笔记本来安装黑群晖还是比较简单的。具体参考张大妈上的这篇文章。 需要注意的是，本来笔记本是ssd和机械硬盘组的双硬盘，安装好群晖之后，发现只能识别到ssd，无法识别机械硬盘。想着ssd用来做硬盘有点浪费，所以我将笔记本的ssd拆下来，又重新安装了一遍，这才识别了机械硬盘。">
 <meta name="twitter:image" content="https://bygeek.cn/2018/03/31/install-synology-on-pc/synology_login.png">
 
+<link rel="canonical" href="https://bygeek.cn/2018/03/31/install-synology-on-pc/">
 
 
-  <link rel="alternate" href="/atom.xml" title="萝卜头的日志" type="application/atom+xml">
-
-
-
-
-  <link rel="canonical" href="https://bygeek.cn/2018/03/31/install-synology-on-pc/">
-
-
-
-<script type="text/javascript" id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
 
-  <title>黑群晖的安装以及设置外网访问 | 萝卜头的日志</title>
+  <title>黑群晖的安装以及设置外网访问 | bygeek's Playground</title>
   
-
-
-
 
 
 
@@ -164,296 +69,184 @@
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="bygeek's Playground" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-right page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">萝卜头的日志</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">bygeek's Playground</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
+
 
 
 
 <nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
   </li>
-
-      
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
 </nav>
 
 
 
-  
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
 
-
+    </div>
+  </div>
 
 </div>
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  
-    <div class="reading-progress-bar"></div>
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://bygeek.cn/2018/03/31/install-synology-on-pc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
       <meta itemprop="name" content="byGeek">
       <meta itemprop="description" content="Never too late to lose weight!!!">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="萝卜头的日志">
+      <meta itemprop="name" content="bygeek's Playground">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">黑群晖的安装以及设置外网访问
-              
-            
-          </h2>
-        
+        <h1 class="post-title" itemprop="name headline">
+          黑群晖的安装以及设置外网访问
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2018-03-31 22:02:28" itemprop="dateCreated datePublished" datetime="2018-03-31T22:02:28+08:00">2018-03-31</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-02-01 00:23:02" itemprop="dateModified" datetime="2020-02-01T00:23:02+08:00">2020-02-01</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/tutorial/" itemprop="url" rel="index"><span itemprop="name">tutorial</span></a></span>
-
-                
-                
-              
             </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
-                <a href="/2018/03/31/install-synology-on-pc/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/03/31/install-synology-on-pc/" itemprop="commentCount"></span>
-                </a>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-30 21:08:49" itemprop="dateModified" datetime="2021-05-30T21:08:49+08:00">2021-05-30</time>
               </span>
-            
-          
-
-          
-          
-
-          
-
-          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tutorial/" itemprop="url" rel="index"><span itemprop="name">tutorial</span></a>
+                </span>
+            </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -461,15 +254,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
         <p>最近把家里闲置的一台笔记本装了群晖，并且利用上次再良心云买的域名，添加了外网访问。此博文为记。</p>
-<h2 id="安装群晖"><a href="#安装群晖" class="headerlink" title="安装群晖"></a>安装群晖</h2><p>总体来说用笔记本来安装黑群晖还是比较简单的。具体参考张大妈上的<a href="https://post.smzdm.com/p/377290/" target="_blank" rel="noopener">这篇文章</a>。</p>
+<h2 id="安装群晖"><a href="#安装群晖" class="headerlink" title="安装群晖"></a>安装群晖</h2><p>总体来说用笔记本来安装黑群晖还是比较简单的。具体参考张大妈上的<a target="_blank" rel="noopener" href="https://post.smzdm.com/p/377290/">这篇文章</a>。</p>
 <p>需要注意的是，本来笔记本是ssd和机械硬盘组的双硬盘，安装好群晖之后，发现只能识别到ssd，无法识别机械硬盘。想着ssd用来做硬盘有点浪费，所以我将笔记本的ssd拆下来，又重新安装了一遍，这才识别了机械硬盘。</p>
-<a id="more"></a>
+<span id="more"></span>
+
+
+
 <p>安装完之后出现登录界面还是有点小激动的。</p>
-<p><img src="synology_login.png" alt="synology_login"></p>
+<p><img src="/2018/03/31/install-synology-on-pc/synology_login.png" alt="synology_login"></p>
 <h2 id="建立外网访问"><a href="#建立外网访问" class="headerlink" title="建立外网访问"></a>建立外网访问</h2><p>安装完之后，建立外网访问。建立外网访问需要具备几个条件。</p>
 <ul>
 <li>拥有外网IP，家里办的联通的宽带，是有公网IP的</li>
@@ -477,1000 +270,277 @@
 <li>DNSPOD账号，免费注册，现在已经被腾讯收购了。腾讯云买的域名默认DNS服务器就是DNSPOD免费服务器。</li>
 </ul>
 <h3 id="添加DNS解析记录"><a href="#添加DNS解析记录" class="headerlink" title="添加DNS解析记录"></a>添加DNS解析记录</h3><p>登录到DNSPOD，再域名下添加一条解析记录。主机记录填上你想要的二级域名，记录值可以随便填一个IP地址(后面会通过脚本来自动修改该值)</p>
-<p><img src="domain.png" alt="domain"></p>
+<p><img src="/2018/03/31/install-synology-on-pc/domain.png" alt="domain"></p>
 <p>然后需要获取这条记录的ID值，按F12打开浏览器开发者工具，选择记录前面的勾选框，然后再html源码中找到value值，即为这条记录的ID值，后续我们需要通过这个ID值来定期修改IP地址。</p>
-<p><img src="find_id.png" alt="find_id"></p>
+<p><img src="/2018/03/31/install-synology-on-pc/find_id.png" alt="find_id"></p>
 <h3 id="创建API-Token"><a href="#创建API-Token" class="headerlink" title="创建API Token"></a>创建API Token</h3><p>再DNSPOD左侧面板中选择安全设置，然后创建API Token，得到API Token ID和Token值。</p>
-<p><img src="api_token.png" alt="api_token"></p>
+<p><img src="/2018/03/31/install-synology-on-pc/api_token.png" alt="api_token"></p>
 <h3 id="建立计划任务"><a href="#建立计划任务" class="headerlink" title="建立计划任务"></a>建立计划任务</h3><p>将安装好群晖的笔记本通过千兆有线连接到路由器中。然后再主控机中打开Synology Assist。查找局域网内的群晖，可以看到DHCP后的IP地址。</p>
-<img src="/2018/03/31/install-synology-on-pc/local_ip.png">
+<img src="/2018/03/31/install-synology-on-pc/local_ip.png" class="">
+
 <p>打开浏览器输入URL: <code>10.0.0.10:5000</code>，以默认的admin用户登陆。然后再控制面板中找到计划任务。新建计划任务，再用户自定义脚本中填入以下脚本（注意替换），并且设置15分钟执行一次：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST https://dnsapi.cn/Record.Ddns -d <span class="string">'login_token=ApiToken数字ID,ApiToken密钥&amp;format=json&amp;domain=你的域名&amp;record_id=记录的ID&amp;record_line=默认&amp;sub_domain=域名的前缀</span></span><br></pre></td></tr></table></figure>
-<p><img src="task01.png" alt="task01"></p>
-<p><img src="task02.png" alt="task02"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST https://dnsapi.cn/Record.Ddns -d <span class="string">&#x27;login_token=ApiToken数字ID,ApiToken密钥&amp;format=json&amp;domain=你的域名&amp;record_id=记录的ID&amp;record_line=默认&amp;sub_domain=域名的前缀</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2018/03/31/install-synology-on-pc/task01.png" alt="task01"></p>
+<p><img src="/2018/03/31/install-synology-on-pc/task02.png" alt="task02"></p>
 <p>这个教程原理就是通过发POST请求给DNSPOD服务器，然后DNSPOD服务器就能知道你的公网地址，同时将得到的公网地址写入到我们新增的域名解析记录中，从而可以动态刷新IP地址。</p>
 <p>现在我们先手动执行以下上面的脚本，linux可以直接再终端执行，window再git bash上执行。如果如果返回执行成功，说明已经成功将公网IP推送域名解析中。</p>
 <h3 id="设置路由器转发"><a href="#设置路由器转发" class="headerlink" title="设置路由器转发"></a>设置路由器转发</h3><p>手动ping一下域名，看是否能得到你的公网ip。如果可以ping通，那么增加的域名解析记录已经成功。从修改DNS解析记录到该记录同步到DNS服务器，需要一定的同步时间。</p>
 <p>再浏览器中登陆群晖，再控制面板中找到外部访问，路由器设置。群晖会启动检测你的路由器型号，并且验证是否具有端口转发的功能。我的路由器是网件的R6400，虽然不在检测中支持的列表里，但是可以兼容。</p>
 <p>![set_up_router][set_up_router.png]</p>
 <p>勾选要转发的端口，这个可以按需勾选，一般至少打开WEB UI 管理也即5000和5001端口。勾选之后，点击保存，注意这步就覆盖路由器中现有的端口映射规则。点击测试连接。如果配置成功，可以看到测试OK。</p>
-<p><img src="test_connection.png" alt="test_connection"></p>
+<p><img src="/2018/03/31/install-synology-on-pc/test_connection.png" alt="test_connection"></p>
 <p>至此，已大功告成。再浏览器中输入域名加端口看看能否访问。没有用过群晖官方的QuickConnect，但是一些朋友使用公网IP来访问之后，都说速度比官方的快不少。通过公网IP在群晖上下载，速度取决于宽带的上行带宽。</p>
 <h2 id="安全设置"><a href="#安全设置" class="headerlink" title="安全设置"></a>安全设置</h2><p>由于现在已经将群晖暴露在公网之下，所以采取一定的安全措施必不可少。下面简单说一些安全的方法。</p>
 <h3 id="https化"><a href="#https化" class="headerlink" title="https化"></a>https化</h3><p>默认是直接使用5000端口进行访问的，这种方式是直接使用HTTP连接来访问。在现在这个全站HTTPS化的时代，实现HTTPS访问必不可少。</p>
 <p>首先去申请SSL证书，有很多的厂商都提供免费的DV SSL证书，如Let’s Encrypt，TrustAsia等。腾讯云与赛门铁克推出了免费的TrustAsia SSL证书。于是自然我去腾讯云申请SSL证书。同一域名下可以免费申请20个DV SSL证书，而且证书签发很快，从申请到审核通过几分钟就好了。</p>
-<p><img src="apply_ssl.png" alt="apply_ssl"></p>
+<p><img src="/2018/03/31/install-synology-on-pc/apply_ssl.png" alt="apply_ssl"></p>
 <p>审核通过之后，将证书下载下来解压缩。进入到群晖中的控制面板，安全，证书导入。我们使用Apache目录下的证书。如下图：</p>
-<p><img src="import_ssl.png" alt="import_ssl"></p>
+<p><img src="/2018/03/31/install-synology-on-pc/import_ssl.png" alt="import_ssl"></p>
 <p>导入之后</p>
-<p><img src="import_success.png" alt="import_success"></p>
+<p><img src="/2018/03/31/install-synology-on-pc/import_success.png" alt="import_success"></p>
 <p>然后再浏览器中使用域名打开。可以看到成功https访问。</p>
-<p><img src="url.png" alt="url"></p>
+<p><img src="/2018/03/31/install-synology-on-pc/url.png" alt="url"></p>
 <h3 id="关闭SSH连接"><a href="#关闭SSH连接" class="headerlink" title="关闭SSH连接"></a>关闭SSH连接</h3><p>安装好的群晖默认是没有启用SSH连接的。如果你不使用ssh来登陆的话，建议关闭SSH登陆。</p>
-<p><img src="disable_ssh.png" alt="disable_ssh"></p>
+<p><img src="/2018/03/31/install-synology-on-pc/disable_ssh.png" alt="disable_ssh"></p>
 <h3 id="设置独立用户，admin用户二部验证"><a href="#设置独立用户，admin用户二部验证" class="headerlink" title="设置独立用户，admin用户二部验证"></a>设置独立用户，admin用户二部验证</h3><p>给admin用户加上二步验证。这样如果使用admin用户登陆，需要输入验证码，提升安全性。同时设置用户组，严格管理每个用户的目录访问权限和读写权限。</p>
 <p>初玩nas，必然还有很多的东西等我去发掘。nas作为一个私有云盘，可以方便的进行数据备份，数据管理等，希望以后好好利用。</p>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
-<li><a href="https://www.chiphell.com/thread-1312291-1-1.html" target="_blank" rel="noopener">ssl证书</a></li>
-<li><a href="https://post.smzdm.com/p/377290/" target="_blank" rel="noopener">nas 安装</a></li>
-<li><a href="http://www.nasyun.com/forum.php?mod=viewthread&amp;action=printable&amp;tid=28977" target="_blank" rel="noopener">nas外网访问</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.chiphell.com/thread-1312291-1-1.html">ssl证书</a></li>
+<li><a target="_blank" rel="noopener" href="https://post.smzdm.com/p/377290/">nas 安装</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.nasyun.com/forum.php?mod=viewthread&action=printable&tid=28977">nas外网访问</a></li>
 </ul>
 
-      
     </div>
 
     
-      
+    
+    
+        
 
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-      <div>
-        <ul class="post-copyright">
+<div>
+<ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者： </strong>byGeek</li>
+    <strong>本文作者： </strong>byGeek
+  </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://bygeek.cn/2018/03/31/install-synology-on-pc/" title="黑群晖的安装以及设置外网访问">https://bygeek.cn/2018/03/31/install-synology-on-pc/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
 </ul>
-
-      </div>
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/nas/" rel="tag"># nas</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/03/20/hexo-add-more-setting/" rel="next" title="hexo添加第三方功能支持">
-                <i class="fa fa-chevron-left"></i> hexo添加第三方功能支持
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/04/visual-studio-is-in-break-mode/" rel="prev" title="visual studio:应用程序处于中断模式">
-                visual studio:应用程序处于中断模式 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-  </div>
-
-
-          </div>
-          
-
-  
-    <div class="comments" id="comments">
-    </div>
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="byGeek">
-            
-              <p class="site-author-name" itemprop="name">byGeek</p>
-              <p class="site-description motion-element" itemprop="description">Never too late to lose weight!!!</p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">70</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">7</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">45</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/byGeek" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                  
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="mailto:byyangatchina@live.cn" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  
-                </span>
-              
-            </div>
-          
-
-          
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装群晖"><span class="nav-number">1.</span> <span class="nav-text">安装群晖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立外网访问"><span class="nav-number">2.</span> <span class="nav-text">建立外网访问</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加DNS解析记录"><span class="nav-number">2.1.</span> <span class="nav-text">添加DNS解析记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建API-Token"><span class="nav-number">2.2.</span> <span class="nav-text">创建API Token</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立计划任务"><span class="nav-number">2.3.</span> <span class="nav-text">建立计划任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置路由器转发"><span class="nav-number">2.4.</span> <span class="nav-text">设置路由器转发</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全设置"><span class="nav-number">3.</span> <span class="nav-text">安全设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#https化"><span class="nav-number">3.1.</span> <span class="nav-text">https化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭SSH连接"><span class="nav-number">3.2.</span> <span class="nav-text">关闭SSH连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置独立用户，admin用户二部验证"><span class="nav-number">3.3.</span> <span class="nav-text">设置独立用户，admin用户二部验证</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2017 – <span itemprop="copyrightYear">2021</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">byGeek</span>
-
-  
-
-  
 </div>
 
 
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/nas/" rel="tag"># nas</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/03/20/hexo-add-more-setting/" rel="prev" title="hexo添加第三方功能支持">
+      <i class="fa fa-chevron-left"></i> hexo添加第三方功能支持
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/04/04/visual-studio-is-in-break-mode/" rel="next" title="visual studio:应用程序处于中断模式">
+      visual studio:应用程序处于中断模式 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
 
+          </div>
+          
 
-
-
-
-
-
-  <div class="footer-custom"><a target="_blank" href="http://www.beian.miit.gov.cn">苏ICP备18025743号</a></div>
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-	
-    
-
-    
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        </div>
+          
   
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  
-  
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(function (item) {
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: false,
-        notify: true,
-        appId: 'OoFjPP6mvjRPyMkCtu8VuHVA-gzGzoHsz',
-        appKey: 'fqepceL0pcOioAq6hp7MKGeu',
-        placeholder: '来啊，快活啊!',
-        avatar:'mm',
-        meta:guest,
-        pageSize:'10' || 10,
-        visitor: false
-    });
-  </script>
-
-
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  <style>
-    .copy-btn {
-      display: inline-block;
-      padding: 6px 12px;
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 20px;
-      color: #333;
-      white-space: nowrap;
-      vertical-align: middle;
-      cursor: pointer;
-      background-color: #eee;
-      background-image: linear-gradient(#fcfcfc, #eee);
-      border: 1px solid #d5d5d5;
-      border-radius: 3px;
-      user-select: none;
-      outline: 0;
-    }
-
-    .highlight-wrap .copy-btn {
-      transition: opacity .3s ease-in-out;
-      opacity: 0;
-      padding: 2px 6px;
-      position: absolute;
-      right: 4px;
-      top: 8px;
-    }
-
-    .highlight-wrap:hover .copy-btn,
-    .highlight-wrap .copy-btn:focus {
-      opacity: 1
-    }
-
-    .highlight-wrap {
-      position: relative;
-    }
-  </style>
-  <script>
-    $('.highlight').each(function (i, e) {
-      var $wrap = $('<div>').addClass('highlight-wrap')
-      $(e).after($wrap)
-      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
-        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
-          return $(e).text()
-        }).toArray().join('\n')
-        var ta = document.createElement('textarea')
-        document.body.appendChild(ta)
-        ta.style.position = 'absolute'
-        ta.style.top = '0px'
-        ta.style.left = '0px'
-        ta.value = code
-        ta.select()
-        ta.focus()
-        var result = document.execCommand('copy')
-        document.body.removeChild(ta)
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%BE%A4%E6%99%96"><span class="nav-number">1.</span> <span class="nav-text">安装群晖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE"><span class="nav-number">2.</span> <span class="nav-text">建立外网访问</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0DNS%E8%A7%A3%E6%9E%90%E8%AE%B0%E5%BD%95"><span class="nav-number">2.1.</span> <span class="nav-text">添加DNS解析记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAAPI-Token"><span class="nav-number">2.2.</span> <span class="nav-text">创建API Token</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1"><span class="nav-number">2.3.</span> <span class="nav-text">建立计划任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E8%B7%AF%E7%94%B1%E5%99%A8%E8%BD%AC%E5%8F%91"><span class="nav-number">2.4.</span> <span class="nav-text">设置路由器转发</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">安全设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#https%E5%8C%96"><span class="nav-number">3.1.</span> <span class="nav-text">https化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%97%ADSSH%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.2.</span> <span class="nav-text">关闭SSH连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%8B%AC%E7%AB%8B%E7%94%A8%E6%88%B7%EF%BC%8Cadmin%E7%94%A8%E6%88%B7%E4%BA%8C%E9%83%A8%E9%AA%8C%E8%AF%81"><span class="nav-number">3.3.</span> <span class="nav-text">设置独立用户，admin用户二部验证</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="byGeek"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">byGeek</p>
+  <div class="site-description" itemprop="description">Never too late to lose weight!!!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
         
-          if(result)$(this).text('复制成功')
-          else $(this).text('复制失败')
-        
-        $(this).blur()
-      })).on('mouseleave', function (e) {
-        var $b = $(this).find('.copy-btn')
-        setTimeout(function () {
-          $b.text('复制')
-        }, 300)
-      }).append(e)
-    })
-  </script>
+          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/byGeek" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;byGeek" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:byyangatchina@live.cn" title="E-Mail → mailto:byyangatchina@live.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">byGeek</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 </body>
 </html>

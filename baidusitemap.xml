@@ -1,1398 +1,283 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-
-    
-  <url>
-    <loc>https://bygeek.cn/2021/05/27/build-your-own-media-server/</loc>
-    <lastmod>2021-05-27T16:22:38.626Z</lastmod>
-    <data>
-        <display>
-        <title>家庭影院折腾入门</title>
-        <pubTime>2021-05-27T13:20:42.000Z</pubTime>
-        
-        <tag>nas</tag>
-         
-        <tag>HTPC</tag>
-         
-         
-           
-             
-              <breadCrumb title="tutorial" url="https://bygeek.cn/categories/tutorial/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://bygeek.cn/2021/01/10/in-memory-of-dashan/</loc>
-    <lastmod>2021-03-07T13:23:35.568Z</lastmod>
-    <data>
-        <display>
-        <title>大山</title>
-        <pubTime>2021-01-10T03:37:32.000Z</pubTime>
-        
-        <tag>notes</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://bygeek.cn/2020/07/11/another-normal-day/</loc>
-    <lastmod>2020-07-11T15:12:04.050Z</lastmod>
-    <data>
-        <display>
-        <title>another normal weekend</title>
-        <pubTime>2020-07-11T14:34:40.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="notes" url="https://bygeek.cn/categories/notes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://bygeek.cn/2020/07/04/Reviews-of-TLUS2/</loc>
-    <lastmod>2020-07-04T13:28:46.509Z</lastmod>
-    <data>
-        <display>
-        <title>最后生还者2的玩后感</title>
-        <pubTime>2020-07-04T11:56:28.000Z</pubTime>
-        
-        <tag>game</tag>
-         
-         
-           
-             
-              <breadCrumb title="note" url="https://bygeek.cn/categories/note/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://bygeek.cn/2020/02/25/change-website-title/</loc>
-    <lastmod>2020-02-25T11:40:14.173Z</lastmod>
-    <data>
-        <display>
-        <title>关于网站改名</title>
-        <pubTime>2020-02-25T11:30:41.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-    
-    
-    
-  <url>
-    <loc>https://bygeek.cn/2018/03/13/%E7%BD%91%E7%AB%99%E5%A4%87%E6%A1%88/</loc>
-    <lastmod>2020-01-31T16:23:02.795Z</lastmod>
-    <data>
-        <display>
-        <title>网站备案</title>
-        <pubTime>2018-03-13T01:24:58.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="notes" url="https://bygeek.cn/categories/notes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
   <url>
     <loc>https://bygeek.cn/2018/02/24/%E5%A6%82%E4%BD%95%E5%88%A0%E9%99%A4github%E6%95%8F%E6%84%9F%E6%96%87%E4%BB%B6/</loc>
-    <lastmod>2020-01-31T16:23:02.794Z</lastmod>
-    <data>
-        <display>
-        <title>如何删除github敏感文件</title>
-        <pubTime>2018-02-24T08:35:47.000Z</pubTime>
-        
-        <tag>github</tag>
-         
-        <tag>bfg</tag>
-         
-         
-           
-             
-              <breadCrumb title="tutorial" url="https://bygeek.cn/categories/tutorial/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bygeek.cn/2018/03/13/%E7%BD%91%E7%AB%99%E5%A4%87%E6%A1%88/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/02/26/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2020-01-31T16:23:02.793Z</lastmod>
-    <data>
-        <display>
-        <title>博客迁移记录</title>
-        <pubTime>2018-02-26T03:01:51.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-        <tag>博客</tag>
-         
-        <tag>next</tag>
-         
-         
-           
-             
-              <breadCrumb title="tutorial" url="https://bygeek.cn/categories/tutorial/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/03/12/%E5%88%A9%E7%94%A8beyond-compare%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90patch%E5%8C%85/</loc>
-    <lastmod>2020-01-31T16:23:02.788Z</lastmod>
-    <data>
-        <display>
-        <title>利用beyond compare自动生成patch包</title>
-        <pubTime>2018-03-12T02:33:40.000Z</pubTime>
-        
-        <tag>CI</tag>
-         
-         
-           
-             
-              <breadCrumb title="tutorial" url="https://bygeek.cn/categories/tutorial/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/09/05/what-is-calling-convention/</loc>
-    <lastmod>2020-01-31T16:23:02.778Z</lastmod>
-    <data>
-        <display>
-        <title>什么是调用惯例</title>
-        <pubTime>2018-09-05T08:46:37.000Z</pubTime>
-        
-        <tag>c</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/10/22/vtable-and-object-memory-layout-in-cpp-language/</loc>
-    <lastmod>2020-01-31T16:23:02.777Z</lastmod>
-    <data>
-        <display>
-        <title>vtable and object memory layout in cpp</title>
-        <pubTime>2018-10-22T03:07:44.000Z</pubTime>
-        
-        <tag>c++</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/04/04/visual-studio-is-in-break-mode/</loc>
-    <lastmod>2020-01-31T16:23:02.766Z</lastmod>
-    <data>
-        <display>
-        <title>visual studio:应用程序处于中断模式</title>
-        <pubTime>2018-04-04T00:28:24.000Z</pubTime>
-        
-        <tag>visual studio</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/09/28/variable-arguments-in-c-c/</loc>
-    <lastmod>2020-01-31T16:23:02.761Z</lastmod>
-    <data>
-        <display>
-        <title>c/c++ 中的变长参数</title>
-        <pubTime>2018-09-28T08:29:09.000Z</pubTime>
-        
-        <tag>c/c++</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/04/05/useful-tools-for-windows/</loc>
-    <lastmod>2020-01-31T16:23:02.743Z</lastmod>
-    <data>
-        <display>
-        <title>个人windows实用工具推荐</title>
-        <pubTime>2018-04-05T07:18:50.000Z</pubTime>
-        
-        <tag>windows</tag>
-         
-        <tag>tool</tag>
-         
-         
-           
-             
-              <breadCrumb title="notes" url="https://bygeek.cn/categories/notes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2019/05/10/use-dbgviewer-to-debug-your-code/</loc>
-    <lastmod>2020-01-31T16:23:02.731Z</lastmod>
-    <data>
-        <display>
-        <title>使用DebugView来debug</title>
-        <pubTime>2019-05-10T06:43:08.000Z</pubTime>
-        
-        <tag>windows</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/05/24/understand-memory-mapped-file/</loc>
-    <lastmod>2020-01-31T16:23:02.724Z</lastmod>
-    <data>
-        <display>
-        <title>浅谈MemoryMappedFile</title>
-        <pubTime>2018-05-24T07:21:57.000Z</pubTime>
-        
-        <tag>MMF</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/08/04/try-not-to-use-git-stash/</loc>
-    <lastmod>2020-01-31T16:23:02.721Z</lastmod>
-    <data>
-        <display>
-        <title>关于git stash的使用小结</title>
-        <pubTime>2018-08-04T03:14:24.000Z</pubTime>
-        
-        <tag>git</tag>
-         
-         
-           
-             
-              <breadCrumb title="tutorial" url="https://bygeek.cn/categories/tutorial/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2019/01/31/thoughts-on-Sony-s-Uncharted-series/</loc>
-    <lastmod>2020-01-31T16:23:02.720Z</lastmod>
-    <data>
-        <display>
-        <title>关于神秘海域系列的玩后感</title>
-        <pubTime>2019-01-31T05:31:30.000Z</pubTime>
-        
-        <tag>game</tag>
-         
-         
-           
-             
-              <breadCrumb title="notes" url="https://bygeek.cn/categories/notes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/12/04/smart-pointer-in-c-plus-plus/</loc>
-    <lastmod>2020-01-31T16:23:02.715Z</lastmod>
-    <data>
-        <display>
-        <title>C++ 中的智能指针</title>
-        <pubTime>2018-12-04T05:58:59.000Z</pubTime>
-        
-        <tag>c++</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/11/06/sizeof-question-in-cpp/</loc>
-    <lastmod>2020-01-31T16:23:02.711Z</lastmod>
-    <data>
-        <display>
-        <title>由sizeof引起的问题</title>
-        <pubTime>2018-11-06T07:48:46.000Z</pubTime>
-        
-        <tag>c++</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/07/05/simple-user-guide-to-dependency-walker/</loc>
-    <lastmod>2020-01-31T16:23:02.699Z</lastmod>
-    <data>
-        <display>
-        <title>Dependency walker的简单介绍</title>
-        <pubTime>2018-07-05T05:37:55.000Z</pubTime>
-        
-        <tag>c++</tag>
-         
-         
-           
-             
-              <breadCrumb title="tutorial" url="https://bygeek.cn/categories/tutorial/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/04/05/simple-spy-tutorial/</loc>
-    <lastmod>2020-01-31T16:23:02.682Z</lastmod>
-    <data>
-        <display>
-        <title>spy++简单教程</title>
-        <pubTime>2018-04-05T06:08:34.000Z</pubTime>
-        
-        <tag>windows</tag>
-         
-         
-           
-             
-              <breadCrumb title="tutorial" url="https://bygeek.cn/categories/tutorial/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/04/18/set-up-debugging-envirronment-about-nginx/</loc>
-    <lastmod>2020-01-31T16:23:02.674Z</lastmod>
-    <data>
-        <display>
-        <title>搭建nginx调试环境</title>
-        <pubTime>2018-04-18T01:10:06.000Z</pubTime>
-        
-        <tag>nginx</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-             
-              <breadCrumb title="nginx" url="https://bygeek.cn/categories/coding/nginx/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/10/24/set-network-proxy-in-vmware-virtual-machine/</loc>
-    <lastmod>2020-01-31T16:23:02.668Z</lastmod>
-    <data>
-        <display>
-        <title>VMware虚拟机中设置网络代理</title>
-        <pubTime>2018-10-24T05:53:13.000Z</pubTime>
-        
-        <tag>shadowsocks</tag>
-         
-        <tag>vmware</tag>
-         
-         
-           
-             
-              <breadCrumb title="tutorial" url="https://bygeek.cn/categories/tutorial/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://bygeek.cn/2018/04/20/register-notification-using-device-interface-guid/</loc>
-    <lastmod>2020-01-31T16:23:02.667Z</lastmod>
-    <data>
-        <display>
-        <title>c#中使用RegisterNotification来接收特定GUID的设备消息</title>
-        <pubTime>2018-04-20T08:00:56.000Z</pubTime>
-        
-        <tag>csharp</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/04/10/recent-review-2018-4/</loc>
-    <lastmod>2020-01-31T16:23:02.666Z</lastmod>
-    <data>
-        <display>
-        <title>有关与最近的生活</title>
-        <pubTime>2018-04-10T14:56:34.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="notes" url="https://bygeek.cn/categories/notes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bygeek.cn/2018/04/20/register-notification-using-device-interface-guid/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/12/18/personal-summary-on-regular-expression/</loc>
-    <lastmod>2020-01-31T16:23:02.663Z</lastmod>
-    <data>
-        <display>
-        <title>关于正则表达式的简单总结</title>
-        <pubTime>2018-12-18T08:03:31.000Z</pubTime>
-        
-        <tag>regex</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/04/16/package-filter-in-fiddler/</loc>
-    <lastmod>2020-01-31T16:23:02.651Z</lastmod>
-    <data>
-        <display>
-        <title>使用Fiddler抓包遇到的几个问题</title>
-        <pubTime>2018-04-16T14:22:00.000Z</pubTime>
-        
-        <tag>fiddler</tag>
-         
-         
-           
-             
-              <breadCrumb title="tutorial" url="https://bygeek.cn/categories/tutorial/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/05/25/operating-system-101/</loc>
-    <lastmod>2020-01-31T16:23:02.650Z</lastmod>
-    <data>
-        <display>
-        <title>操作系统基本概念</title>
-        <pubTime>2018-05-25T06:46:51.000Z</pubTime>
-        
-        <tag>operating system</tag>
-         
-         
-           
-             
-              <breadCrumb title="learning" url="https://bygeek.cn/categories/learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://bygeek.cn/2018/02/24/onion-architecture/</loc>
-    <lastmod>2020-01-31T16:23:02.645Z</lastmod>
-    <data>
-        <display>
-        <title>onion architecture</title>
-        <pubTime>2018-02-24T01:30:17.000Z</pubTime>
-        
-        <tag>architecture</tag>
-         
-        <tag>software</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/04/12/notes-about-installing-ubuntu-using-vmware/</loc>
-    <lastmod>2020-01-31T16:23:02.644Z</lastmod>
-    <data>
-        <display>
-        <title>关于使用VMware安装ubuntu的几个注意点</title>
-        <pubTime>2018-04-12T11:28:38.000Z</pubTime>
-        
-        <tag>linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="tutorial" url="https://bygeek.cn/categories/tutorial/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
-    <loc>https://bygeek.cn/2018/12/04/new-features-in-cpp-11/</loc>
-    <lastmod>2020-01-31T16:23:02.642Z</lastmod>
-    <data>
-        <display>
-        <title>C++ 11带来的新特性</title>
-        <pubTime>2018-12-04T01:56:55.000Z</pubTime>
-        
-        <tag>c++</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-             
-              <breadCrumb title="repost" url="https://bygeek.cn/categories/coding/repost/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <loc>https://bygeek.cn/2018/02/24/onion-architecture/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2019/06/03/my-story-with-video-games/</loc>
-    <lastmod>2020-01-31T16:23:02.641Z</lastmod>
-    <data>
-        <display>
-        <title>我与游戏的故事(一)</title>
-        <pubTime>2019-06-03T14:06:26.000Z</pubTime>
-        
-        <tag>games</tag>
-         
-         
-           
-             
-              <breadCrumb title="notes" url="https://bygeek.cn/categories/notes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bygeek.cn/2018/12/04/new-features-in-cpp-11/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2020/01/30/my-review-on-rdr2/</loc>
-    <lastmod>2020-01-31T16:23:02.640Z</lastmod>
-    <data>
-        <display>
-        <title>My reviews about Red dead redemption 2</title>
-        <pubTime>2020-01-30T13:07:04.000Z</pubTime>
-        
-        <tag>games</tag>
-         
-         
-           
-             
-              <breadCrumb title="notes" url="https://bygeek.cn/categories/notes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://bygeek.cn/2017/05/26/my-fisrt-post/</loc>
-    <lastmod>2020-01-31T16:23:02.639Z</lastmod>
-    <data>
-        <display>
-        <title>my fisrt post</title>
-        <pubTime>2017-05-26T14:48:59.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://bygeek.cn/2018/03/19/migration-to-tecent-cvm/</loc>
-    <lastmod>2020-01-31T16:23:02.638Z</lastmod>
-    <data>
-        <display>
-        <title>博客迁移到腾讯云</title>
-        <pubTime>2018-03-19T06:22:31.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="tutorial" url="https://bygeek.cn/categories/tutorial/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2017/05/31/my-first-blog/</loc>
-    <lastmod>2020-01-31T16:23:02.638Z</lastmod>
-    <data>
-        <display>
-        <title>my first blog</title>
-        <pubTime>2017-05-31T15:37:54.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="notes" url="https://bygeek.cn/categories/notes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bygeek.cn/2017/05/26/my-fisrt-post/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/09/13/lua-os-execute-vs-os-popen/</loc>
-    <lastmod>2020-01-31T16:23:02.636Z</lastmod>
-    <data>
-        <display>
-        <title>lua: os.execute vs os.popen</title>
-        <pubTime>2018-09-13T09:34:52.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bygeek.cn/2018/03/19/migration-to-tecent-cvm/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2019/05/15/it-is-all-about-security/</loc>
-    <lastmod>2020-01-31T16:23:02.631Z</lastmod>
-    <data>
-        <display>
-        <title>windows 开发遇到的一些权限问题</title>
-        <pubTime>2019-05-15T02:21:39.000Z</pubTime>
-        
-        <tag>windows</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://bygeek.cn/2018/03/31/install-synology-on-pc/</loc>
-    <lastmod>2020-01-31T16:23:02.585Z</lastmod>
-    <data>
-        <display>
-        <title>黑群晖的安装以及设置外网访问</title>
-        <pubTime>2018-03-31T14:02:28.000Z</pubTime>
-        
-        <tag>nas</tag>
-         
-         
-           
-             
-              <breadCrumb title="tutorial" url="https://bygeek.cn/categories/tutorial/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/08/28/install-shadowsocks-on-centos-and-enable-bbr/</loc>
-    <lastmod>2020-01-31T16:23:02.583Z</lastmod>
-    <data>
-        <display>
-        <title>centos 配置Shadowsocks备忘</title>
-        <pubTime>2018-08-28T03:22:23.000Z</pubTime>
-        
-        <tag>linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="tutorial" url="https://bygeek.cn/categories/tutorial/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
-    <loc>https://bygeek.cn/2017/06/10/image-test/</loc>
-    <lastmod>2020-01-31T16:23:02.582Z</lastmod>
-    <data>
-        <display>
-        <title>image test</title>
-        <pubTime>2017-06-09T16:22:42.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
+    <loc>https://bygeek.cn/2018/03/31/install-synology-on-pc/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bygeek.cn/2021/01/10/in-memory-of-dashan/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/03/20/hexo-add-more-setting/</loc>
-    <lastmod>2020-01-31T16:23:02.581Z</lastmod>
-    <data>
-        <display>
-        <title>hexo添加第三方功能支持</title>
-        <pubTime>2018-03-20T02:33:13.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="tutorial" url="https://bygeek.cn/categories/tutorial/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bygeek.cn/2017/06/10/image-test/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/08/08/git-over-proxy/</loc>
-    <lastmod>2020-01-31T16:23:02.579Z</lastmod>
-    <data>
-        <display>
-        <title>配置git使用socks5代理</title>
-        <pubTime>2018-08-08T05:49:14.000Z</pubTime>
-        
-        <tag>git</tag>
-         
-         
-           
-             
-              <breadCrumb title="tutorial" url="https://bygeek.cn/categories/tutorial/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2019/07/13/downgrade-ios-13-to-ios-12-3/</loc>
-    <lastmod>2020-01-31T16:23:02.578Z</lastmod>
-    <data>
-        <display>
-        <title>ios 13 beta降级到ios 12.3</title>
-        <pubTime>2019-07-13T15:22:46.000Z</pubTime>
-        
-        <tag>apple</tag>
-         
-         
-           
-             
-              <breadCrumb title="notes" url="https://bygeek.cn/categories/notes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/10/11/data-binding-problem-with-radiobutton-in-wpf/</loc>
-    <lastmod>2020-01-31T16:23:02.567Z</lastmod>
-    <data>
-        <display>
-        <title>WPF中遇到的一个关于RadioButton的数据绑定问题</title>
-        <pubTime>2018-10-11T06:00:12.000Z</pubTime>
-        
-        <tag>wpf</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/07/13/cpp-core-guidelines/</loc>
-    <lastmod>2020-01-31T16:23:02.565Z</lastmod>
-    <data>
-        <display>
-        <title>cpp core guidelines</title>
-        <pubTime>2018-07-13T09:23:06.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/06/27/const-in-cpp/</loc>
-    <lastmod>2020-01-31T16:23:02.555Z</lastmod>
-    <data>
-        <display>
-        <title>c++中的const总结</title>
-        <pubTime>2018-06-27T02:36:47.000Z</pubTime>
-        
-        <tag>c++</tag>
-         
-        <tag>const</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bygeek.cn/2020/02/25/change-website-title/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/03/12/centos-%E5%88%9D%E5%A7%8B%E5%8C%96%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2020-01-31T16:23:02.554Z</lastmod>
-    <data>
-        <display>
-        <title>centos 初始化简单配置</title>
-        <pubTime>2018-03-12T14:08:30.000Z</pubTime>
-        
-        <tag>linux</tag>
-         
-        <tag>centos</tag>
-         
-         
-           
-             
-              <breadCrumb title="tutorial" url="https://bygeek.cn/categories/tutorial/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://bygeek.cn/2018/09/11/call-c-function-in-lua/</loc>
-    <lastmod>2020-01-31T16:23:02.553Z</lastmod>
-    <data>
-        <display>
-        <title>call c function in lua</title>
-        <pubTime>2018-09-11T01:14:18.000Z</pubTime>
-        
-        <tag>lua</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/03/05/c-%EF%BC%9A%E5%85%B3%E4%BA%8Esocket-Receive%E6%98%AF%E5%90%A6%E9%98%BB%E5%A1%9E%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2020-01-31T16:23:02.552Z</lastmod>
-    <data>
-        <display>
-        <title>c#：关于socket.Receive是否阻塞的问题</title>
-        <pubTime>2018-03-05T08:38:40.000Z</pubTime>
-        
-        <tag>socket</tag>
-         
-        <tag>c#</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
-    <loc>https://bygeek.cn/2018/11/08/build-c-c-extension-for-python/</loc>
-    <lastmod>2020-01-31T16:23:02.548Z</lastmod>
-    <data>
-        <display>
-        <title>build c/c++ extension for python</title>
-        <pubTime>2018-11-08T02:30:26.000Z</pubTime>
-        
-        <tag>c++</tag>
-         
-        <tag>python</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <loc>https://bygeek.cn/2018/09/11/call-c-function-in-lua/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bygeek.cn/2021/05/27/build-your-own-media-server/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/02/23/blog-plan/</loc>
-    <lastmod>2020-01-31T16:23:02.547Z</lastmod>
-    <data>
-        <display>
-        <title>blog plan</title>
-        <pubTime>2018-02-23T02:38:11.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="notes" url="https://bygeek.cn/categories/notes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
-    <loc>https://bygeek.cn/2017/11/08/blog-migration-test/</loc>
-    <lastmod>2020-01-31T16:23:02.546Z</lastmod>
-    <data>
-        <display>
-        <title>blog migration test</title>
-        <pubTime>2017-11-08T02:31:35.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="notes" url="https://bygeek.cn/categories/notes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <loc>https://bygeek.cn/2018/11/08/build-c-c-extension-for-python/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/11/23/bitwise-copy-vs-memberwise-copy/</loc>
-    <lastmod>2020-01-31T16:23:02.544Z</lastmod>
-    <data>
-        <display>
-        <title>bitwise copy vs memberwise copy</title>
-        <pubTime>2018-11-23T00:52:46.000Z</pubTime>
-        
-        <tag>copy</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bygeek.cn/2017/11/08/blog-migration-test/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/09/28/awesome-bits/</loc>
-    <lastmod>2020-01-31T16:23:02.543Z</lastmod>
-    <data>
-        <display>
-        <title>awesome-bits</title>
-        <pubTime>2018-09-28T07:33:33.000Z</pubTime>
-        
-        <tag>c/c++</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://bygeek.cn/2018/04/04/automatic-versionning-in-visual-studio/</loc>
-    <lastmod>2020-01-31T16:23:02.527Z</lastmod>
-    <data>
-        <display>
-        <title>visual studio中版本号自动管理</title>
-        <pubTime>2018-04-04T01:13:35.000Z</pubTime>
-        
-        <tag>visual studio</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/12/17/auto-versioning-in-cpp-project/</loc>
-    <lastmod>2020-01-31T16:23:02.525Z</lastmod>
-    <data>
-        <display>
-        <title>在VS C++工程中使用Auto versionning</title>
-        <pubTime>2018-12-17T08:12:33.000Z</pubTime>
-        
-        <tag>C++</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bygeek.cn/2018/04/04/automatic-versionning-in-visual-studio/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/08/13/async-operation-about-backgroundworker/</loc>
-    <lastmod>2020-01-31T16:23:02.524Z</lastmod>
-    <data>
-        <display>
-        <title>从BackgroundWorker说起</title>
-        <pubTime>2018-08-13T07:33:58.000Z</pubTime>
-        
-        <tag>csharp</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bygeek.cn/2020/07/11/another-normal-day/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/11/15/about-synchronization/</loc>
-    <lastmod>2020-01-31T16:23:02.522Z</lastmod>
-    <data>
-        <display>
-        <title>同步与锁</title>
-        <pubTime>2018-11-15T02:56:24.000Z</pubTime>
-        
-        <tag>lock</tag>
-         
-        <tag>synchronization</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/06/19/What-are-TCHAR-WCHAR-LPSTR-LPWSTR-LPCTSTR/</loc>
-    <lastmod>2020-01-31T16:23:02.519Z</lastmod>
-    <data>
-        <display>
-        <title>What are TCHAR, WCHAR, LPSTR, LPWSTR, LPCTSTR</title>
-        <pubTime>2018-06-19T02:34:56.000Z</pubTime>
-        
-        <tag>c++</tag>
-         
-         
-           
-             
-              <breadCrumb title="learning" url="https://bygeek.cn/categories/learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/02/28/WPF-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%92%8C%E4%BE%9D%E8%B5%96%E9%A1%B9%E5%B1%9E%E6%80%A7%E6%B5%85%E6%9E%90/</loc>
-    <lastmod>2020-01-31T16:23:02.515Z</lastmod>
-    <data>
-        <display>
-        <title>WPF自定义控件和依赖项属性浅析</title>
-        <pubTime>2018-02-28T00:18:35.000Z</pubTime>
-        
-        <tag>WPF</tag>
-         
-         
-           
-             
-              <breadCrumb title="coding" url="https://bygeek.cn/categories/coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/03/05/TCP%E6%8A%A5%E5%A4%B4%E7%9A%84%E6%A0%87%E5%BF%97%E4%BD%8D/</loc>
-    <lastmod>2020-01-31T16:23:02.503Z</lastmod>
-    <data>
-        <display>
-        <title>TCP报头的标志位</title>
-        <pubTime>2018-03-05T09:15:45.000Z</pubTime>
-        
-        <tag>TCP</tag>
-         
-         
-           
-             
-              <breadCrumb title="learning" url="https://bygeek.cn/categories/learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/03/05/TCP%E4%B8%AD%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/</loc>
-    <lastmod>2020-01-31T16:23:02.499Z</lastmod>
-    <data>
-        <display>
-        <title>TCP中的三次握手和四次挥手</title>
-        <pubTime>2018-03-05T08:55:41.000Z</pubTime>
-        
-        <tag>TCP</tag>
-         
-         
-           
-             
-              <breadCrumb title="learning" url="https://bygeek.cn/categories/learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bygeek.cn/2020/07/04/Reviews-of-TLUS2/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/03/05/Socket%E9%80%9A%E4%BF%A1%E6%B5%85%E6%9E%90/</loc>
-    <lastmod>2020-01-31T16:23:02.481Z</lastmod>
-    <data>
-        <display>
-        <title>Socket通信浅析</title>
-        <pubTime>2018-03-05T06:46:38.000Z</pubTime>
-        
-        <tag>socket</tag>
-         
-         
-           
-             
-              <breadCrumb title="learning" url="https://bygeek.cn/categories/learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2019/08/18/Change-Optical-modem-to-bridge-mode/</loc>
-    <lastmod>2020-01-31T16:23:02.477Z</lastmod>
-    <data>
-        <display>
-        <title>记一次修改联通光猫为桥接模式的经历</title>
-        <pubTime>2019-08-18T01:38:23.000Z</pubTime>
-        
-        <tag>geek</tag>
-         
-         
-           
-             
-              <breadCrumb title="notes" url="https://bygeek.cn/categories/notes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://bygeek.cn/2020/01/31/2020-new-year/</loc>
-    <lastmod>2020-01-31T16:23:02.467Z</lastmod>
-    <data>
-        <display>
-        <title>2020-new-year</title>
-        <pubTime>2020-01-31T06:02:32.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="notes" url="https://bygeek.cn/categories/notes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2019/02/11/2019-new-year/</loc>
-    <lastmod>2020-01-31T16:23:02.466Z</lastmod>
-    <data>
-        <display>
-        <title>2019-new-year</title>
-        <pubTime>2019-02-11T02:17:25.000Z</pubTime>
-        
-        <tag>plan</tag>
-         
-         
-           
-             
-              <breadCrumb title="notes" url="https://bygeek.cn/categories/notes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
-    <loc>https://bygeek.cn/2019/01/07/2018-review/</loc>
-    <lastmod>2020-01-31T16:23:02.465Z</lastmod>
-    <data>
-        <display>
-        <title>2018年回顾</title>
-        <pubTime>2019-01-07T01:54:53.000Z</pubTime>
-        
-        <tag>plan</tag>
-         
-         
-           
-             
-              <breadCrumb title="notes" url="https://bygeek.cn/categories/notes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
+    <loc>https://bygeek.cn/2020/01/31/2020-new-year/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
   <url>
     <loc>https://bygeek.cn/2018/02/23/2018-new-year/</loc>
-    <lastmod>2020-01-31T16:23:02.463Z</lastmod>
-    <data>
-        <display>
-        <title>2018-new-year</title>
-        <pubTime>2018-02-23T00:58:30.000Z</pubTime>
-        
-        <tag>plan</tag>
-         
-         
-           
-             
-              <breadCrumb title="notes" url="https://bygeek.cn/categories/notes/"/>
-          
-        </display>
-    </data>
-    </url>
-
-</urlset>
+    <lastmod>2021-05-30</lastmod>
+  </url>
+  <url>
+    <loc>https://bygeek.cn/2019/01/07/2018-review/</loc>
+    <lastmod>2021-05-30</lastmod>
+  </url>
+</urlset> 

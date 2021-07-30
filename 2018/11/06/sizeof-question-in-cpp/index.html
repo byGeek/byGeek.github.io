@@ -1,150 +1,55 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/favicon-128x128.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-64x64.png?v=6.4.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=6.4.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=6.4.0">
-
-
-  <link rel="mask-icon" href="/favicon-128x128.png?v=6.4.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '6.4.0',
-    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"bygeek.cn","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta name="description" content="最近在看Lippman的《Inside the c++ object model》，书中Lippman说有人发邮件问了他一个问题。 123456class X &amp;#123;&amp;#125;;class Y : public virtual X&amp;#123;&amp;#125;;class Z: public virtual X&amp;#123;&amp;#125;;class A:public Y, public Z&amp;#12">
-<meta name="keywords" content="vtable,c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="由sizeof引起的问题">
 <meta property="og:url" content="https://bygeek.cn/2018/11/06/sizeof-question-in-cpp/index.html">
-<meta property="og:site_name" content="萝卜头的日志">
+<meta property="og:site_name" content="bygeek&#39;s Playground">
 <meta property="og:description" content="最近在看Lippman的《Inside the c++ object model》，书中Lippman说有人发邮件问了他一个问题。 123456class X &amp;#123;&amp;#125;;class Y : public virtual X&amp;#123;&amp;#125;;class Z: public virtual X&amp;#123;&amp;#125;;class A:public Y, public Z&amp;#12">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bygeek.cn/2018/11/06/sizeof-question-in-cpp/vtable1.png">
-<meta property="og:updated_time" content="2020-01-31T16:23:02.711Z">
+<meta property="article:published_time" content="2018-11-06T07:48:46.000Z">
+<meta property="article:modified_time" content="2021-05-30T13:08:50.006Z">
+<meta property="article:author" content="byGeek">
+<meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="由sizeof引起的问题">
-<meta name="twitter:description" content="最近在看Lippman的《Inside the c++ object model》，书中Lippman说有人发邮件问了他一个问题。 123456class X &amp;#123;&amp;#125;;class Y : public virtual X&amp;#123;&amp;#125;;class Z: public virtual X&amp;#123;&amp;#125;;class A:public Y, public Z&amp;#12">
 <meta name="twitter:image" content="https://bygeek.cn/2018/11/06/sizeof-question-in-cpp/vtable1.png">
 
+<link rel="canonical" href="https://bygeek.cn/2018/11/06/sizeof-question-in-cpp/">
 
 
-  <link rel="alternate" href="/atom.xml" title="萝卜头的日志" type="application/atom+xml">
-
-
-
-
-  <link rel="canonical" href="https://bygeek.cn/2018/11/06/sizeof-question-in-cpp/">
-
-
-
-<script type="text/javascript" id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
 
-  <title>由sizeof引起的问题 | 萝卜头的日志</title>
+  <title>由sizeof引起的问题 | bygeek's Playground</title>
   
-
-
-
 
 
 
@@ -152,296 +57,184 @@
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="bygeek's Playground" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-right page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">萝卜头的日志</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">bygeek's Playground</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
+
 
 
 
 <nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
   </li>
-
-      
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
 </nav>
 
 
 
-  
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
 
-
+    </div>
+  </div>
 
 </div>
     </header>
 
     
+  <div class="reading-progress-bar"></div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  
-    <div class="reading-progress-bar"></div>
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://bygeek.cn/2018/11/06/sizeof-question-in-cpp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
       <meta itemprop="name" content="byGeek">
       <meta itemprop="description" content="Never too late to lose weight!!!">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="萝卜头的日志">
+      <meta itemprop="name" content="bygeek's Playground">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">由sizeof引起的问题
-              
-            
-          </h2>
-        
+        <h1 class="post-title" itemprop="name headline">
+          由sizeof引起的问题
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2018-11-06 15:48:46" itemprop="dateCreated datePublished" datetime="2018-11-06T15:48:46+08:00">2018-11-06</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-02-01 00:23:02" itemprop="dateModified" datetime="2020-02-01T00:23:02+08:00">2020-02-01</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/coding/" itemprop="url" rel="index"><span itemprop="name">coding</span></a></span>
-
-                
-                
-              
             </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
-                <a href="/2018/11/06/sizeof-question-in-cpp/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/11/06/sizeof-question-in-cpp/" itemprop="commentCount"></span>
-                </a>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-30 21:08:50" itemprop="dateModified" datetime="2021-05-30T21:08:50+08:00">2021-05-30</time>
               </span>
-            
-          
-
-          
-          
-
-          
-
-          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/coding/" itemprop="url" rel="index"><span itemprop="name">coding</span></a>
+                </span>
+            </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -449,1011 +242,302 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
         <p>最近在看Lippman的《Inside the c++ object model》，书中Lippman说有人发邮件问了他一个问题。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">X</span> &#123;</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Y</span> :</span> <span class="keyword">public</span> <span class="keyword">virtual</span> X&#123;&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Z</span>:</span> <span class="keyword">public</span> <span class="keyword">virtual</span> X&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span><span class="keyword">public</span> Y, <span class="keyword">public</span> Z&#123;&#125;;</span><br></pre></td></tr></table></figure>
+
 <p>根据以上定义，使用sizeof运算符分别计算类X,Y,Z,A的所占大小。</p>
-<a id="more"></a>
+<span id="more"></span>
+
 <p>答案公布：</p>
 <p>在msvc140和gcc 5.4环境下测试：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">size_t</span> temp = <span class="keyword">sizeof</span>(X); <span class="comment">//1</span></span><br><span class="line">temp = <span class="keyword">sizeof</span>(Y);  <span class="comment">//4</span></span><br><span class="line">temp = <span class="keyword">sizeof</span>(Z);  <span class="comment">//4</span></span><br><span class="line">temp = <span class="keyword">sizeof</span>(A);  <span class="comment">//8</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="为什么sizeof-X-为1？"><a href="#为什么sizeof-X-为1？" class="headerlink" title="为什么sizeof(X)为1？"></a>为什么sizeof(X)为1？</h2><p>X是一个”空类”，按理来说sizeof(X)应该是0，因为没有数据需要存储。为何sizeof(X)为1呢？</p>
 <p>Lippman给出的解释是，如果空类所占空间为0，则类的两个不同的实例地址就相同，这样的结果显然不是我们想要的。编译器自动给空类插入占用一字节的char数据成员，这样可以保证不同的对象会分配唯一的地址空间。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X a, b;</span><br><span class="line"><span class="keyword">if</span>(&amp;a == &amp;b) <span class="built_in">cerr</span> &lt;&lt; <span class="string">"yipes"</span> &lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X a, b;</span><br><span class="line"><span class="keyword">if</span>(&amp;a == &amp;b) <span class="built_in">cerr</span> &lt;&lt; <span class="string">&quot;yipes&quot;</span> &lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+
 <p>在《Effective c++》中item 39中，作者提到：freestanding objects必须有Non-zero size，对于大多数编译器，sizeof(X)是1，是因为编译器插入一个char完成的。</p>
-<p>在<a href="https://en.cppreference.com/w/cpp/language/ebo" target="_blank" rel="noopener">cppreference</a>可以找到相关的标准规定:</p>
+<p>在<a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/ebo">cppreference</a>可以找到相关的标准规定:</p>
 <blockquote>
-<p>The size of any <a href="https://en.cppreference.com/w/cpp/language/object" target="_blank" rel="noopener">object</a> or member subobject (unless [[no_unique_address]] – see below) (since C++20) is required to be at least 1 even if the type is an empty <a href="https://en.cppreference.com/w/cpp/language/class" target="_blank" rel="noopener">class type</a> (that is, a class or struct that has no non-static data members), in order to be able to guarantee that the addresses of distinct objects of the same type are always distinct.</p>
+<p>The size of any <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/object">object</a> or member subobject (unless [[no_unique_address]] – see below) (since C++20) is required to be at least 1 even if the type is an empty <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/class">class type</a> (that is, a class or struct that has no non-static data members), in order to be able to guarantee that the addresses of distinct objects of the same type are always distinct.</p>
 </blockquote>
 <h2 id="为什么sizeof-Y-sizeof-Z-为4？"><a href="#为什么sizeof-Y-sizeof-Z-为4？" class="headerlink" title="为什么sizeof(Y), sizeof(Z)为4？"></a>为什么sizeof(Y), sizeof(Z)为4？</h2><p>先来考虑另外一个问题</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">X</span>&#123;</span>&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Q</span>:</span> <span class="keyword">public</span> X&#123;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">    	<span class="keyword">int</span> data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>Q继承自空类X，考虑到sizeof(X) = 1, 那么Q类的所占空间是sizeof(int)还是sizeof(int) + 1?</p>
 <p>答案是根据Empty base optimization原则，Q所占空间为sizeof(int)。也就是说base class所占空间被“优化”掉了。但是这里我们class Y， Z并没有数据成员，sizeof(Y) == sizeof(Z)  == 4。</p>
 <p>这是因为使用了virtual inheritance。一旦跟<strong>virtual</strong>扯上关系，编译器又在背后偷偷的做了一些事情。</p>
 <p>为了实现面向对象中的多态特性，大多数编译器都会将一个vptr插入到the most base class中，vptr指向vtable。关于vtable的相关知识，请参考我的这篇<a href="https://bygeek.cn/2018/10/22/vtable-and-object-memory-layout-in-cpp-language/">博文</a>。正是因为vptr指针占用4个字节，并且基于empty base optimization原则，所以sizeof(Y) = 4。</p>
 <h2 id="为什么sizeof-A-为8？"><a href="#为什么sizeof-A-为8？" class="headerlink" title="为什么sizeof(A)为8？"></a>为什么sizeof(A)为8？</h2><p>因为virtual继承关系，编译器会在Y，Z的memory layout中加入一个vptr指针。在多重继承下，X的memory layout会包含Y,Z的vptr，所以sizeof(A)为8。</p>
 <h2 id="如看查看memory-layout"><a href="#如看查看memory-layout" class="headerlink" title="如看查看memory layout"></a>如看查看memory layout</h2><h3 id="MSVC"><a href="#MSVC" class="headerlink" title="MSVC"></a>MSVC</h3><p>在msvc下我们可以使用编译器选项<code>/d1reportSingleClassLayout&lt;classname&gt;</code>， <code>/d1reportAllClassLayout</code>来查看memory layout。打开visual studio 开发者prompt</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cl.exe your_source_file_path.cpp /d1reportAllClassLayout</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cl.exe your_source_file_path.cpp &#x2F;d1reportAllClassLayout</span><br></pre></td></tr></table></figure>
+
 <p>如果包含的类比较多，可以将输出信息重定向到文件中，方便查看。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cl.exe your_source_file_path.cpp /d1reportAllClassLayout &gt; &quot;d:\out.txt&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cl.exe your_source_file_path.cpp &#x2F;d1reportAllClassLayout &gt; &quot;d:\out.txt&quot;</span><br></pre></td></tr></table></figure>
+
 <p>在MSVC140下dump出来的memory layout如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">class X	size(1):</span><br><span class="line">	+---</span><br><span class="line">	+---</span><br><span class="line"></span><br><span class="line">class Y	size(4):</span><br><span class="line">	+---</span><br><span class="line"> 0	| &#123;vbptr&#125;</span><br><span class="line">	+---</span><br><span class="line">	+--- (virtual base X)</span><br><span class="line">	+---</span><br><span class="line"></span><br><span class="line">Y::$vbtable@:</span><br><span class="line"> 0	| 0</span><br><span class="line"> 1	| 4 (Yd(Y+0)X)</span><br><span class="line">vbi:	   class  offset o.vbptr  o.vbte fVtorDisp</span><br><span class="line">               X       4       0       4 0</span><br><span class="line"></span><br><span class="line">class Z	size(4):</span><br><span class="line">	+---</span><br><span class="line"> 0	| &#123;vbptr&#125;</span><br><span class="line">	+---</span><br><span class="line">	+--- (virtual base X)</span><br><span class="line">	+---</span><br><span class="line"></span><br><span class="line">Z::$vbtable@:</span><br><span class="line"> 0	| 0</span><br><span class="line"> 1	| 4 (Zd(Z+0)X)</span><br><span class="line">vbi:	   class  offset o.vbptr  o.vbte fVtorDisp</span><br><span class="line">               X       4       0       4 0</span><br><span class="line"></span><br><span class="line">class A	size(8):</span><br><span class="line">	+---</span><br><span class="line"> 0	| +--- (base class Y)</span><br><span class="line"> 0	| | &#123;vbptr&#125;</span><br><span class="line">	| +---</span><br><span class="line"> 4	| +--- (base class Z)</span><br><span class="line"> 4	| | &#123;vbptr&#125;</span><br><span class="line">	| +---</span><br><span class="line">	+---</span><br><span class="line">	+--- (virtual base X)</span><br><span class="line">	+---</span><br><span class="line"></span><br><span class="line">A::$vbtable@Y@:</span><br><span class="line"> 0	| 0</span><br><span class="line"> 1	| 8 (Ad(Y+0)X)</span><br><span class="line"></span><br><span class="line">A::$vbtable@Z@:</span><br><span class="line"> 0	| 0</span><br><span class="line"> 1	| 4 (Ad(Z+0)X)</span><br><span class="line">vbi:	   class  offset o.vbptr  o.vbte fVtorDisp</span><br><span class="line">               X       8       0       4 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">class X	size(1):</span><br><span class="line">	+---</span><br><span class="line">	+---</span><br><span class="line"></span><br><span class="line">class Y	size(4):</span><br><span class="line">	+---</span><br><span class="line"> 0	| &#123;vbptr&#125;</span><br><span class="line">	+---</span><br><span class="line">	+--- (virtual base X)</span><br><span class="line">	+---</span><br><span class="line"></span><br><span class="line">Y::$vbtable@:</span><br><span class="line"> 0	| 0</span><br><span class="line"> 1	| 4 (Yd(Y+0)X)</span><br><span class="line">vbi:	   class  offset o.vbptr  o.vbte fVtorDisp</span><br><span class="line">               X       4       0       4 0</span><br><span class="line"></span><br><span class="line">class Z	size(4):</span><br><span class="line">	+---</span><br><span class="line"> 0	| &#123;vbptr&#125;</span><br><span class="line">	+---</span><br><span class="line">	+--- (virtual base X)</span><br><span class="line">	+---</span><br><span class="line"></span><br><span class="line">Z::$vbtable@:</span><br><span class="line"> 0	| 0</span><br><span class="line"> 1	| 4 (Zd(Z+0)X)</span><br><span class="line">vbi:	   class  offset o.vbptr  o.vbte fVtorDisp</span><br><span class="line">               X       4       0       4 0</span><br><span class="line"></span><br><span class="line">class A	size(8):</span><br><span class="line">	+---</span><br><span class="line"> 0	| +--- (base class Y)</span><br><span class="line"> 0	| | &#123;vbptr&#125;</span><br><span class="line">	| +---</span><br><span class="line"> 4	| +--- (base class Z)</span><br><span class="line"> 4	| | &#123;vbptr&#125;</span><br><span class="line">	| +---</span><br><span class="line">	+---</span><br><span class="line">	+--- (virtual base X)</span><br><span class="line">	+---</span><br><span class="line"></span><br><span class="line">A::$vbtable@Y@:</span><br><span class="line"> 0	| 0</span><br><span class="line"> 1	| 8 (Ad(Y+0)X)</span><br><span class="line"></span><br><span class="line">A::$vbtable@Z@:</span><br><span class="line"> 0	| 0</span><br><span class="line"> 1	| 4 (Ad(Z+0)X)</span><br><span class="line">vbi:	   class  offset o.vbptr  o.vbte fVtorDisp</span><br><span class="line">               X       8       0       4 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <h3 id="GCC"><a href="#GCC" class="headerlink" title="GCC"></a>GCC</h3><p>在gcc中可以通过编译选项<code>-fdump-class-hierarchy</code>来查看。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ main.cpp -fdump-class-hierarchy</span><br></pre></td></tr></table></figure>
+
 <p>编程成功后，会生成一个main.cpp.002t.class的文件，搜索想要查看的类的memory layout即可。</p>
 <p>载g++ 5.4 ubuntu下dump出来的main.cpp.002t.class文件如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">Class X</span><br><span class="line">   size=1 align=1</span><br><span class="line">   base size=0 base align=1</span><br><span class="line">X (0x0x7f34c09cf5a0) 0 empty</span><br><span class="line"></span><br><span class="line">Vtable for Y</span><br><span class="line">Y::_ZTV1Y: 3u entries</span><br><span class="line">0     0u</span><br><span class="line">8     (int (*)(...))0</span><br><span class="line">16    (int (*)(...))(&amp; _ZTI1Y)</span><br><span class="line"></span><br><span class="line">VTT for Y</span><br><span class="line">Y::_ZTT1Y: 1u entries</span><br><span class="line">0     ((&amp; Y::_ZTV1Y) + 24u)</span><br><span class="line"></span><br><span class="line">Class Y</span><br><span class="line">   size=8 align=8</span><br><span class="line">   base size=8 base align=8</span><br><span class="line">Y (0x0x7f34c08661a0) 0 nearly-empty</span><br><span class="line">    vptridx=0u vptr=((&amp; Y::_ZTV1Y) + 24u)</span><br><span class="line">  X (0x0x7f34c09cf600) 0 empty virtual</span><br><span class="line">      vbaseoffset=-24</span><br><span class="line"></span><br><span class="line">Vtable for Z</span><br><span class="line">Z::_ZTV1Z: 3u entries</span><br><span class="line">0     0u</span><br><span class="line">8     (int (*)(...))0</span><br><span class="line">16    (int (*)(...))(&amp; _ZTI1Z)</span><br><span class="line"></span><br><span class="line">VTT for Z</span><br><span class="line">Z::_ZTT1Z: 1u entries</span><br><span class="line">0     ((&amp; Z::_ZTV1Z) + 24u)</span><br><span class="line"></span><br><span class="line">Class Z</span><br><span class="line">   size=8 align=8</span><br><span class="line">   base size=8 base align=8</span><br><span class="line">Z (0x0x7f34c0866208) 0 nearly-empty</span><br><span class="line">    vptridx=0u vptr=((&amp; Z::_ZTV1Z) + 24u)</span><br><span class="line">  X (0x0x7f34c09cf660) 0 empty virtual</span><br><span class="line">      vbaseoffset=-24</span><br><span class="line"></span><br><span class="line">Vtable for A</span><br><span class="line">A::_ZTV1A: 6u entries</span><br><span class="line">0     0u</span><br><span class="line">8     (int (*)(...))0</span><br><span class="line">16    (int (*)(...))(&amp; _ZTI1A)</span><br><span class="line">24    18446744073709551608u</span><br><span class="line">32    (int (*)(...))-8</span><br><span class="line">40    (int (*)(...))(&amp; _ZTI1A)</span><br><span class="line"></span><br><span class="line">Construction vtable for Y (0x0x7f34c0866270 instance) in A</span><br><span class="line">A::_ZTC1A0_1Y: 3u entries</span><br><span class="line">0     0u</span><br><span class="line">8     (int (*)(...))0</span><br><span class="line">16    (int (*)(...))(&amp; _ZTI1Y)</span><br><span class="line"></span><br><span class="line">Construction vtable for Z (0x0x7f34c08662d8 instance) in A</span><br><span class="line">A::_ZTC1A8_1Z: 3u entries</span><br><span class="line">0     18446744073709551608u</span><br><span class="line">8     (int (*)(...))0</span><br><span class="line">16    (int (*)(...))(&amp; _ZTI1Z)</span><br><span class="line"></span><br><span class="line">VTT for A</span><br><span class="line">A::_ZTT1A: 4u entries</span><br><span class="line">0     ((&amp; A::_ZTV1A) + 24u)</span><br><span class="line">8     ((&amp; A::_ZTC1A0_1Y) + 24u)</span><br><span class="line">16    ((&amp; A::_ZTC1A8_1Z) + 24u)</span><br><span class="line">24    ((&amp; A::_ZTV1A) + 48u)</span><br><span class="line"></span><br><span class="line">Class A</span><br><span class="line">   size=16 align=8</span><br><span class="line">   base size=16 base align=8</span><br><span class="line">A (0x0x7f34c0878310) 0</span><br><span class="line">    vptridx=0u vptr=((&amp; A::_ZTV1A) + 24u)</span><br><span class="line">  Y (0x0x7f34c0866270) 0 nearly-empty</span><br><span class="line">      primary-for A (0x0x7f34c0878310)</span><br><span class="line">      subvttidx=8u</span><br><span class="line">    X (0x0x7f34c09cf6c0) 0 empty virtual</span><br><span class="line">        vbaseoffset=-24</span><br><span class="line">  Z (0x0x7f34c08662d8) 8 nearly-empty</span><br><span class="line">      subvttidx=16u vptridx=24u vptr=((&amp; A::_ZTV1A) + 48u)</span><br><span class="line">    X (0x0x7f34c09cf6c0) alternative-path</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">Class X</span><br><span class="line">   size&#x3D;1 align&#x3D;1</span><br><span class="line">   base size&#x3D;0 base align&#x3D;1</span><br><span class="line">X (0x0x7f34c09cf5a0) 0 empty</span><br><span class="line"></span><br><span class="line">Vtable for Y</span><br><span class="line">Y::_ZTV1Y: 3u entries</span><br><span class="line">0     0u</span><br><span class="line">8     (int (*)(...))0</span><br><span class="line">16    (int (*)(...))(&amp; _ZTI1Y)</span><br><span class="line"></span><br><span class="line">VTT for Y</span><br><span class="line">Y::_ZTT1Y: 1u entries</span><br><span class="line">0     ((&amp; Y::_ZTV1Y) + 24u)</span><br><span class="line"></span><br><span class="line">Class Y</span><br><span class="line">   size&#x3D;8 align&#x3D;8</span><br><span class="line">   base size&#x3D;8 base align&#x3D;8</span><br><span class="line">Y (0x0x7f34c08661a0) 0 nearly-empty</span><br><span class="line">    vptridx&#x3D;0u vptr&#x3D;((&amp; Y::_ZTV1Y) + 24u)</span><br><span class="line">  X (0x0x7f34c09cf600) 0 empty virtual</span><br><span class="line">      vbaseoffset&#x3D;-24</span><br><span class="line"></span><br><span class="line">Vtable for Z</span><br><span class="line">Z::_ZTV1Z: 3u entries</span><br><span class="line">0     0u</span><br><span class="line">8     (int (*)(...))0</span><br><span class="line">16    (int (*)(...))(&amp; _ZTI1Z)</span><br><span class="line"></span><br><span class="line">VTT for Z</span><br><span class="line">Z::_ZTT1Z: 1u entries</span><br><span class="line">0     ((&amp; Z::_ZTV1Z) + 24u)</span><br><span class="line"></span><br><span class="line">Class Z</span><br><span class="line">   size&#x3D;8 align&#x3D;8</span><br><span class="line">   base size&#x3D;8 base align&#x3D;8</span><br><span class="line">Z (0x0x7f34c0866208) 0 nearly-empty</span><br><span class="line">    vptridx&#x3D;0u vptr&#x3D;((&amp; Z::_ZTV1Z) + 24u)</span><br><span class="line">  X (0x0x7f34c09cf660) 0 empty virtual</span><br><span class="line">      vbaseoffset&#x3D;-24</span><br><span class="line"></span><br><span class="line">Vtable for A</span><br><span class="line">A::_ZTV1A: 6u entries</span><br><span class="line">0     0u</span><br><span class="line">8     (int (*)(...))0</span><br><span class="line">16    (int (*)(...))(&amp; _ZTI1A)</span><br><span class="line">24    18446744073709551608u</span><br><span class="line">32    (int (*)(...))-8</span><br><span class="line">40    (int (*)(...))(&amp; _ZTI1A)</span><br><span class="line"></span><br><span class="line">Construction vtable for Y (0x0x7f34c0866270 instance) in A</span><br><span class="line">A::_ZTC1A0_1Y: 3u entries</span><br><span class="line">0     0u</span><br><span class="line">8     (int (*)(...))0</span><br><span class="line">16    (int (*)(...))(&amp; _ZTI1Y)</span><br><span class="line"></span><br><span class="line">Construction vtable for Z (0x0x7f34c08662d8 instance) in A</span><br><span class="line">A::_ZTC1A8_1Z: 3u entries</span><br><span class="line">0     18446744073709551608u</span><br><span class="line">8     (int (*)(...))0</span><br><span class="line">16    (int (*)(...))(&amp; _ZTI1Z)</span><br><span class="line"></span><br><span class="line">VTT for A</span><br><span class="line">A::_ZTT1A: 4u entries</span><br><span class="line">0     ((&amp; A::_ZTV1A) + 24u)</span><br><span class="line">8     ((&amp; A::_ZTC1A0_1Y) + 24u)</span><br><span class="line">16    ((&amp; A::_ZTC1A8_1Z) + 24u)</span><br><span class="line">24    ((&amp; A::_ZTV1A) + 48u)</span><br><span class="line"></span><br><span class="line">Class A</span><br><span class="line">   size&#x3D;16 align&#x3D;8</span><br><span class="line">   base size&#x3D;16 base align&#x3D;8</span><br><span class="line">A (0x0x7f34c0878310) 0</span><br><span class="line">    vptridx&#x3D;0u vptr&#x3D;((&amp; A::_ZTV1A) + 24u)</span><br><span class="line">  Y (0x0x7f34c0866270) 0 nearly-empty</span><br><span class="line">      primary-for A (0x0x7f34c0878310)</span><br><span class="line">      subvttidx&#x3D;8u</span><br><span class="line">    X (0x0x7f34c09cf6c0) 0 empty virtual</span><br><span class="line">        vbaseoffset&#x3D;-24</span><br><span class="line">  Z (0x0x7f34c08662d8) 8 nearly-empty</span><br><span class="line">      subvttidx&#x3D;16u vptridx&#x3D;24u vptr&#x3D;((&amp; A::_ZTV1A) + 48u)</span><br><span class="line">    X (0x0x7f34c09cf6c0) alternative-path</span><br></pre></td></tr></table></figure>
+
 <p>在调试的时候还可以通过GDB命令<code>info vtbl</code>来查看vtable，下面是在vscode中调试示例。</p>
-<img src="/2018/11/06/sizeof-question-in-cpp/vtable1.png">
+<img src="/2018/11/06/sizeof-question-in-cpp/vtable1.png" class="">
+
+
+
+
+
 <p>如果想更多了解C++背后的故事，推荐阅读Lippman的《Inside the C++ Object Model》一书。</p>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
-<li><p><a href="https://ofekshilon.com/2010/11/07/d1reportallclasslayout-dumping-object-memory-layout/" target="_blank" rel="noopener">https://ofekshilon.com/2010/11/07/d1reportallclasslayout-dumping-object-memory-layout/</a></p>
+<li><p><a target="_blank" rel="noopener" href="https://ofekshilon.com/2010/11/07/d1reportallclasslayout-dumping-object-memory-layout/">https://ofekshilon.com/2010/11/07/d1reportallclasslayout-dumping-object-memory-layout/</a></p>
 </li>
-<li><p><a href="http://visualgdb.com/gdbreference/commands/info_vtbl" target="_blank" rel="noopener">http://visualgdb.com/gdbreference/commands/info_vtbl</a></p>
+<li><p><a target="_blank" rel="noopener" href="http://visualgdb.com/gdbreference/commands/info_vtbl">http://visualgdb.com/gdbreference/commands/info_vtbl</a></p>
 </li>
-<li><a href="https://www.gonwan.com/2010/09/20/c-class-layout-using-msvc/" target="_blank" rel="noopener">https://www.gonwan.com/2010/09/20/c-class-layout-using-msvc/</a></li>
-<li><a href="https://stackoverflow.com/questions/99297/how-are-virtual-functions-and-vtable-implemented" target="_blank" rel="noopener">https://stackoverflow.com/questions/99297/how-are-virtual-functions-and-vtable-implemented</a></li>
-<li><a href="https://www.v2ex.com/t/500682#reply10" target="_blank" rel="noopener">https://www.v2ex.com/t/500682#reply10</a></li>
-<li><a href="https://isocpp.org/wiki/faq/pointers-to-members" target="_blank" rel="noopener">https://isocpp.org/wiki/faq/pointers-to-members</a></li>
+<li><p><a target="_blank" rel="noopener" href="https://www.gonwan.com/2010/09/20/c-class-layout-using-msvc/">https://www.gonwan.com/2010/09/20/c-class-layout-using-msvc/</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/99297/how-are-virtual-functions-and-vtable-implemented">https://stackoverflow.com/questions/99297/how-are-virtual-functions-and-vtable-implemented</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.v2ex.com/t/500682#reply10">https://www.v2ex.com/t/500682#reply10</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://isocpp.org/wiki/faq/pointers-to-members">https://isocpp.org/wiki/faq/pointers-to-members</a></p>
+</li>
 </ul>
 
-      
     </div>
 
     
-      
+    
+    
+        
 
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-      <div>
-        <ul class="post-copyright">
+<div>
+<ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者： </strong>byGeek</li>
+    <strong>本文作者： </strong>byGeek
+  </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://bygeek.cn/2018/11/06/sizeof-question-in-cpp/" title="由sizeof引起的问题">https://bygeek.cn/2018/11/06/sizeof-question-in-cpp/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
 </ul>
-
-      </div>
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/c/" rel="tag"># c++</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/10/24/set-network-proxy-in-vmware-virtual-machine/" rel="next" title="VMware虚拟机中设置网络代理">
-                <i class="fa fa-chevron-left"></i> VMware虚拟机中设置网络代理
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/08/build-c-c-extension-for-python/" rel="prev" title="build c/c++ extension for python">
-                build c/c++ extension for python <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-  </div>
-
-
-          </div>
-          
-
-  
-    <div class="comments" id="comments">
-    </div>
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="byGeek">
-            
-              <p class="site-author-name" itemprop="name">byGeek</p>
-              <p class="site-description motion-element" itemprop="description">Never too late to lose weight!!!</p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">70</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">7</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">45</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/byGeek" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                  
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="mailto:byyangatchina@live.cn" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  
-                </span>
-              
-            </div>
-          
-
-          
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么sizeof-X-为1？"><span class="nav-number">1.</span> <span class="nav-text">为什么sizeof(X)为1？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么sizeof-Y-sizeof-Z-为4？"><span class="nav-number">2.</span> <span class="nav-text">为什么sizeof(Y), sizeof(Z)为4？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么sizeof-A-为8？"><span class="nav-number">3.</span> <span class="nav-text">为什么sizeof(A)为8？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如看查看memory-layout"><span class="nav-number">4.</span> <span class="nav-text">如看查看memory layout</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MSVC"><span class="nav-number">4.1.</span> <span class="nav-text">MSVC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GCC"><span class="nav-number">4.2.</span> <span class="nav-text">GCC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">5.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2017 – <span itemprop="copyrightYear">2021</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">byGeek</span>
-
-  
-
-  
 </div>
 
 
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/c/" rel="tag"># c++</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/10/24/set-network-proxy-in-vmware-virtual-machine/" rel="prev" title="VMware虚拟机中设置网络代理">
+      <i class="fa fa-chevron-left"></i> VMware虚拟机中设置网络代理
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/11/08/build-c-c-extension-for-python/" rel="next" title="build c/c++ extension for python">
+      build c/c++ extension for python <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
 
+          </div>
+          
 
-
-
-
-
-
-  <div class="footer-custom"><a target="_blank" href="http://www.beian.miit.gov.cn">苏ICP备18025743号</a></div>
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-	
-    
-
-    
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        </div>
+          
   
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  
-  
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(function (item) {
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: false,
-        notify: true,
-        appId: 'OoFjPP6mvjRPyMkCtu8VuHVA-gzGzoHsz',
-        appKey: 'fqepceL0pcOioAq6hp7MKGeu',
-        placeholder: '来啊，快活啊!',
-        avatar:'mm',
-        meta:guest,
-        pageSize:'10' || 10,
-        visitor: false
-    });
-  </script>
-
-
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  <style>
-    .copy-btn {
-      display: inline-block;
-      padding: 6px 12px;
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 20px;
-      color: #333;
-      white-space: nowrap;
-      vertical-align: middle;
-      cursor: pointer;
-      background-color: #eee;
-      background-image: linear-gradient(#fcfcfc, #eee);
-      border: 1px solid #d5d5d5;
-      border-radius: 3px;
-      user-select: none;
-      outline: 0;
-    }
-
-    .highlight-wrap .copy-btn {
-      transition: opacity .3s ease-in-out;
-      opacity: 0;
-      padding: 2px 6px;
-      position: absolute;
-      right: 4px;
-      top: 8px;
-    }
-
-    .highlight-wrap:hover .copy-btn,
-    .highlight-wrap .copy-btn:focus {
-      opacity: 1
-    }
-
-    .highlight-wrap {
-      position: relative;
-    }
-  </style>
-  <script>
-    $('.highlight').each(function (i, e) {
-      var $wrap = $('<div>').addClass('highlight-wrap')
-      $(e).after($wrap)
-      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
-        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
-          return $(e).text()
-        }).toArray().join('\n')
-        var ta = document.createElement('textarea')
-        document.body.appendChild(ta)
-        ta.style.position = 'absolute'
-        ta.style.top = '0px'
-        ta.style.left = '0px'
-        ta.value = code
-        ta.select()
-        ta.focus()
-        var result = document.execCommand('copy')
-        document.body.removeChild(ta)
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88sizeof-X-%E4%B8%BA1%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">为什么sizeof(X)为1？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88sizeof-Y-sizeof-Z-%E4%B8%BA4%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">为什么sizeof(Y), sizeof(Z)为4？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88sizeof-A-%E4%B8%BA8%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">为什么sizeof(A)为8？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E7%9C%8B%E6%9F%A5%E7%9C%8Bmemory-layout"><span class="nav-number">4.</span> <span class="nav-text">如看查看memory layout</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MSVC"><span class="nav-number">4.1.</span> <span class="nav-text">MSVC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GCC"><span class="nav-number">4.2.</span> <span class="nav-text">GCC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">5.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="byGeek"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">byGeek</p>
+  <div class="site-description" itemprop="description">Never too late to lose weight!!!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
         
-          if(result)$(this).text('复制成功')
-          else $(this).text('复制失败')
-        
-        $(this).blur()
-      })).on('mouseleave', function (e) {
-        var $b = $(this).find('.copy-btn')
-        setTimeout(function () {
-          $b.text('复制')
-        }, 300)
-      }).append(e)
-    })
-  </script>
+          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/byGeek" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;byGeek" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:byyangatchina@live.cn" title="E-Mail → mailto:byyangatchina@live.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">byGeek</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 </body>
 </html>
