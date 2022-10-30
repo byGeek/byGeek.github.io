@@ -96,7 +96,7 @@ qiniu:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: ssh://robert@23.105.197.248:29371/home/robert/blog.git
+  repo: ssh://robert@23.105.220.56:29371/home/robert/blog.git
   branch: master
  
 # add by robert at 2018/02/26 start
